@@ -6,7 +6,7 @@ Asia Gault
 Danyal Effendi
 Jemi Choi
 Journey Gault
-Sandra
+Sandra Kupfer
 
 # Selected Technology or Technologies
 MERN
