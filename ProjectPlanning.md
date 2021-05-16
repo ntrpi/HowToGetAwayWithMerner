@@ -89,11 +89,11 @@ MongoDB, express ,react and node
 
 ### At this moment we are still researching the technology and have not yet decided how to divide the work equitably, however for the moment we have decided to asign ourselves the following roles: 
 
-Journey Gault: Team Lead
-Asia Gault: Lead Designer
-Danyal Effendi: Strategy Lead
-Jemi Choi: Frond End Developer
-Sandra Kupfer: Back End Developer
+- Journey Gault: Team Lead
+- Asia Gault: Lead Designer
+- Danyal Effendi: Strategy Lead
+- Jemi Choi: Frond End Developer
+- Sandra Kupfer: Back End Developer
 
 
 
@@ -101,12 +101,12 @@ Sandra Kupfer: Back End Developer
 
 ## Time line (Task and schedule):
 
-May 19: Project Planin part 2, Pick a bootstrap template
-May 26: Phase 2 Hello World, static HTML, Page definition and distribution
-May 31: Phase 3 Database Built
-June 7: Phase 4 work on specific features
-June 14: Phase 5 work on specific features
-June 22: Phase 6:Individual submission
-June 23: Phase 7: Presentation
+- May 19: Project Planin part 2, Pick a bootstrap template
+- May 26: Phase 2 Hello World, static HTML, Page definition and distribution, Basic Navigation
+- May 31: Phase 3 Database Built
+- June 7: Phase 4 work on specific features
+- June 14: Phase 5 work on specific features
+- June 22: Phase 6:Individual submission
+- June 23: Phase 7: Presentation
 
 
