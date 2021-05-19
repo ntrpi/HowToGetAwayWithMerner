@@ -101,8 +101,9 @@ MongoDB, express ,react and node
 
 ## Time line (Task and schedule):
 
-- May 19: Project Planin part 2, Pick a bootstrap template
-- May 26: Phase 2 Hello World, static HTML, Page definition and distribution, Basic Navigation
+- May 19: Project Planning part 2, Pick a bootstrap template
+- May 23: Hello World, Page definition and distribution, Basic Navigation
+- May 26: Phase 2 Static HTML 
 - May 31: Phase 3 Database Built
 - June 7: Phase 4 work on specific features
 - June 14: Phase 5 work on specific features
