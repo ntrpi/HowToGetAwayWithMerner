@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.text-white {
+  color: white;
+}
+
+.text-green {
+  color: #5ab099;
+}
+
+.text-d-green {
+  color: #20756a;
+}
+
+.bg-green {
+  background: #5ab099;
+}
+
+.bg-d-green {
+  background: #20756a;
+}
+
+.border-green {
+  border: 2px solid #5ab099;
+}
+
+.border-d-green {
+  border: 2px solid #20756a;
+}
+
