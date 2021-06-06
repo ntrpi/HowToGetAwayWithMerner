@@ -18,7 +18,7 @@ export default class Navbar extends Component {//components always have to rende
               <Link to="/" className="nav-link">Todos</Link>
             </li>
             <li className="navbar-item">
-              <Link to="/create" className="nav-link">Create Todo</Link>
+              <Link to="/user/create" className="nav-link">Sign Up</Link>
             </li>
           </ul>
         </div>
