@@ -25,6 +25,21 @@
   </ol>
 </details>
 
+## How to connect app to Mongo DB Atlas
+
+Steps for Accessing Database:
+
+Create .env file in backend
+Name variable ATLAS_URL
+Add Password/username
+Go to mongo DB
+Go to cluster
+Create new database
+Name database test
+3. Go back to .env and replace database name
+
+ATLAS_URL=mongodb+srv://<username>:<userPassword>@cluster0.84uvo.mongodb.net/test?retryWrites=true&w=majority
+
 ## About
 
 This project was created following the MERN tutorial here: https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/ on 2021-05-23
