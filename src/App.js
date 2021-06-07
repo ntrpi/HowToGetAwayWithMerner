@@ -10,6 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // Each of these is a view, so component ~= view.
 import CreateUser from "./components/user/create-user.component";
+import UsersList from "./components/user/list-user.component";
+import ConfirmDeleteUser from "./components/user/confirm-delete-user.component";
+
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
@@ -43,7 +46,9 @@ class App extends Component
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
 
-          <Route path="/user/create" component={CreateUser} />
+          <Route path="/user/" exact component={UsersList} />
+          <Route path="/user/create" exact component={CreateUser} />
+          <Route path="/user/confirm-delete/:id" exact component={ConfirmDeleteUser} />
         </div>
       </Router>
     );

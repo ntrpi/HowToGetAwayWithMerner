@@ -7,6 +7,7 @@ let User = require( '../models/user.model' );
 // Users index page.
 router.route( '/' ).get( function( req, res )
 {
+    helper.log( "Users index page." );
     User.find( function( err, users )
     {
         if( err ) {
@@ -93,6 +94,23 @@ router.route( '/delete/:id' ).post( function( req, res )
         } else {
             const message = `User ${id} deleted successfully.`;
             helper.res202( res, messager );
+        }
+    } );
+} );
+
+// Endpoint to confirm a delete.
+router.route( '/confirm-delete/:id' ).post( function( req, res )
+{
+    let id = req.params.id;
+    User.findById( id, function( err, user )
+    {
+        if( err ) {
+            const message = "An error occurred trying to find user to confirm delete with id " + id;
+            helper.res404( res, message, err );
+        } else if( !user ) {
+            helper.log( `User for confirm delete with id ${id} not found.` )
+        } else {
+            res.json( user );
         }
     } );
 } );
