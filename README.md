@@ -5,6 +5,12 @@
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li><a href="#about">About</a></li>
+    <li><a href="#getting-started">Getting Started</a>
+        <ul>
+          <li><a href="#prerequisites">Prerequisites</li>
+          <li><a href="#steps">Steps</li>
+        </ul>
+    </li>
     <li>
       <a href="#part-1">Part 1</a>
       <ul>
@@ -25,28 +31,41 @@
   </ol>
 </details>
 
-## How to connect app to Mongo DB Atlas
-
-Steps for Accessing Database:
-
-Create .env file in backend
-Name variable ATLAS_URL
-Add Password/username
-Go to mongo DB
-Go to cluster
-Create new database
-Name database test
-3. Go back to .env and replace database name
-
-ATLAS_URL=mongodb+srv://<username>:<userPassword>@cluster0.84uvo.mongodb.net/test?retryWrites=true&w=majority
-
 ## About
 
-This project was created following the MERN tutorial here: https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/ on 2021-05-23
+This project was created using following the MERN tutorial as a model: https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/
 
-This file mostly contains my notes and anything I need to write down to help me figure out what I am learning.
+It has since been significantly modified.
+
+## Getting Started
+
+### Prerequisites
+You will need to have an account with Atlas to run MongoDB. In your cluster, make sure you have a database called "test".
+
+You will also need to have NodeJs installed.
+
+### Steps
+
+1. Clone the repo.
+
+2. Go to the root directory and run ```npm i```.
+
+3. Go to the backend directory and run ```npm i``` again.
+
+4. In the backend folder create a file called '.env'.
+
+5. In this file create a variable called 'ATLAS_URL' and set this variable to the URL of your database called "test". It should look something like this:
+```ATLAS_URL=mongodb+srv://<username>:<userPassword>@<cluster>.<cluster ID>.mongodb.net/test?retryWrites=true&w=majority```
+
+6. In the backend folder run ```nodemon server```.
+
+7. In the root folder run ```npm start```.
+
+You're good to go!
 
 ## Part 1 Notes
+
+These are just notes I made while following the tutorial.
 
 ### Create and Start the App
 
