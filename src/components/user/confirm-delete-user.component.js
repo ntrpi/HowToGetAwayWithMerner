@@ -45,7 +45,10 @@ export default class ConfirmDeleteUser extends Component
         // Initialize the state with an empty object called user.
         // We have to do this because it's the only way to have
         // member variables in a JS class.
-        this.state = { userId: props.match.params.id, user: {} };
+        this.state = { 
+            userId: props.match.params.id, 
+            user: {} 
+        };
     }
 
     // Override this method to be called when the UserList component is "mounted" successfully.

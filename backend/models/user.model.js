@@ -40,7 +40,7 @@ let User = new Schema( {
 
     user_status: {
         type: String,
-        enum: [ 'ACTIVE', 'SUSPENDED', 'CANCELED'],
+        enum: [ 'ACTIVE', 'FLAGGED', 'SUSPENDED', 'CANCELED'],
         default: 'ACTIVE'
     }
 } );

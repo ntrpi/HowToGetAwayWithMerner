@@ -12,7 +12,7 @@
         </ul>
     </li>
     <li>
-      <a href="#part-1">Part 1</a>
+      <a href="#part-1-notes">Part 1 Notes</a>
       <ul>
         <li><a href="#create-and-start-the-app">Create and Start the App</a></li>
         <li><a href="#add-bootstrap">Add Bootstrap</a></li>
@@ -22,7 +22,7 @@
       </ul>
     </li>
     <li>
-      <a href="#part-2">Part 2</a>
+      <a href="#part-2-notes">Part 2 Notes</a>
       <ul>
         <li><a href="#initialize-the-back-end">Initialize the Back End</a></li>
       </ul>
@@ -108,20 +108,21 @@ After adding the import .component statements, it would seem that each Route ele
 
 See comments in App.js and the .component files.
 
-## Part 2
+## Part 2 Notes
 
 ### Initialize the Back End
 
 I installed mongoose, but I didn't use it to create the database, only to access it afterwards. I created a db on Atlas, and used Mongo Client to insert stuff into it instead. Not sure now why I did this, except maybe I didn't want to deal with the whole mongoose schema thing right now.
 
 <strong>If you are part of my 5303 group stop when you get to the Installing MondoDB section. This is where I deviated to use Atlas instead of a local instance of MongoDb. Check backend/server.js to see how it differs from the tutorial.
-
-I used the Connecting To MongoDB By Using Mongoose section, but not the Create a Mongoose Schema section. </strong>
+</strong>
 
 Also, the tutorial forgot to mention that you should probably add /backend/node_modules to .gitignore.
 
 
 ## Deployment
+
+Coming soon!
 
 https://devcenter.heroku.com/articles/deploying-nodejs
 
