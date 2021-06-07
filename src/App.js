@@ -3,7 +3,8 @@ import React, { Component } from "react";
 
 // This is the react router package. Not sure why there
 // are three different "as" things.
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // This is to use the bootstrap we installed.
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,9 +18,6 @@ import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 import Navbar from "./components/navbar.component"
-
-// Fixed this from .png in the tutorial.
-import logo from "./logo.svg";
 
 // This is a class instead of a function called App() like the 
 // default code from this file, not sure why.

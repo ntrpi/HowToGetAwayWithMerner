@@ -80,7 +80,6 @@ export default class CreateUser extends Component
 
     render()
     {
-        console.log( "here" );
         return (
             <div style={ { marginTop: 10 } }>
                 <h3>Create New User</h3>

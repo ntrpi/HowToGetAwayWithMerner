@@ -99,11 +99,12 @@ router.route( '/delete/:id' ).post( function( req, res )
 } );
 
 // Endpoint to confirm a delete.
-router.route( '/confirm-delete/:id' ).post( function( req, res )
+router.route( '/confirm-delete/:id' ).get( function( req, res )
 {
-    let id = req.params.id;
+     let id = req.params.id;
     User.findById( id, function( err, user )
     {
+        helper.log( "in confirm delete" );
         if( err ) {
             const message = "An error occurred trying to find user to confirm delete with id " + id;
             helper.res404( res, message, err );
