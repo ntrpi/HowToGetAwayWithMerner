@@ -16,6 +16,8 @@ import UsersList from "./components/user/list-user.component";
 
 // import user details
 import UserDetails from "./components/user/details-user.component";
+// Import Update Users  Method
+import UserEdit from "./components/user/edit-users.component";
 
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
@@ -48,6 +50,7 @@ class App extends Component
           <Route path="/create" component={CreateTodo} />
           
           <Route path="/user/details-user/:id" exact component={UserDetails} />
+          <Route path="/user/edit/:id" exact component={UserEdit} />
 
           <Route path="/user/" exact component={UsersList} />
           <Route path="/user/create" exact component={CreateUser} />

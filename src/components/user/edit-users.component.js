@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-export default class EditUser extends Component
+export default class UserEdit extends Component
 {
     constructor( props )
     {
@@ -83,13 +83,8 @@ export default class EditUser extends Component
         // Prevent form reset, just like regular js.
         e.preventDefault();
       
-        // For debugging.
-        console.log( `Form submitted:` );
-        console.log( `User Email: ${ this.state.user_email }` );
-        console.log( `User Postal Code: ${ this.state.user_postal_code }` );
-
         // Create an object to send in the post.
-        const newUser = {
+        const obj = {
             user_password: this.state.user_password,
             user_email: this.state.user_email,
             user_postal_code: this.state.user_postal_code,
@@ -97,16 +92,11 @@ export default class EditUser extends Component
         };
 
         // Do the post.
-        axios.post('http://localhost:4000/users/add', newUser)
+        axios.post('http://localhost:4000/users/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
-        // Manually reset the form.
-        this.setState( {
-            user_password: '',
-            user_email: '',
-            user_postal_code: '',
-            user_status: false
-        } );
+            this.props.history.push('/user/')
+        
     }
 
     render()
@@ -114,7 +104,7 @@ export default class EditUser extends Component
         console.log( "here" );
         return (
             <div style={ { marginTop: 10 } }>
-                <h3>Create New User</h3>
+                <h3>Update User Infor</h3>
                 <form onSubmit={ this.onSubmit }>
 
                     <div className="form-group">
@@ -145,7 +135,7 @@ export default class EditUser extends Component
                     </div>
 
                     <div className="form-group m-2">
-                        <input type="submit" value="Create User" className="btn btn-primary" />
+                        <input type="submit" value="update User" className="btn btn-primary" />
                     </div>
                 </form>
             </div>
