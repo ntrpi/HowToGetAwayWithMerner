@@ -14,6 +14,9 @@ export default class UserEdit extends Component
         this.onChangeUserPassword = this.onChangeUserPassword.bind( this );
         this.onChangeUserEmail = this.onChangeUserEmail.bind( this );
         this.onChangeUserPostalCode = this.onChangeUserPostalCode.bind( this );
+        //ADDED FOR STATUS
+        this.onChangeUserStatus = this.onChangeUserStatus.bind(this);
+        // ADDED FOR STATUS
         this.onSubmit = this.onSubmit.bind( this );
 
         // I suspect this has something to do with the only way you can set member
@@ -42,7 +45,7 @@ export default class UserEdit extends Component
                     user_password: response.data.user_password,
                     user_email: response.data.user_email,
                     user_postal_code: response.data.user_postal_code,
-                    // user_status: 'ACTIVE',
+                    user_status: response.data.user_status,
                 });
             })
             .catch(function(error) 
@@ -75,6 +78,12 @@ export default class UserEdit extends Component
         this.setState( {
             user_postal_code: e.target.value
         } );
+    }
+    onChangeUserStatus(e)
+    {
+        this.setState({
+            user_status: e.target.value
+        })
     }
 
     onSubmit( e )
@@ -131,6 +140,15 @@ export default class UserEdit extends Component
                             className="form-control"
                             value={ this.state.user_postal_code }
                             onChange={ this.onChangeUserPostalCode }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Status </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            value={ this.state.user_status }
+                            onChange={ this.onChangeUserStatus }
                         />
                     </div>
 
