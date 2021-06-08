@@ -142,7 +142,7 @@ export default class UserEdit extends Component
                             onChange={ this.onChangeUserPostalCode }
                         />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label>Status </label>
                         <input
                             type="text"
@@ -150,8 +150,18 @@ export default class UserEdit extends Component
                             value={ this.state.user_status }
                             onChange={ this.onChangeUserStatus }
                         />
-                    </div>
+                    </div> */}
+                    <div className="form-group">
+                        <label>Status</label>
 
+                        <select value={ this.state.user_status} onChange={ this.onChangeUserStatus } className="form-control" >
+                            <option value="ACTIVE">ACTIVE</option>
+                            <option value="FLAGGED">FLAGGED</option>
+                            <option value="SUSPENDED">SUSPENDED</option>
+                            <option value="CANCELED">CANCELED</option>
+
+                        </select>
+                    </div>
                     <div className="form-group m-2">
                         <input type="submit" value="update User" className="btn btn-primary" />
                     </div>
