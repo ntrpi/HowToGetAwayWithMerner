@@ -113,7 +113,7 @@ export default class UserEdit extends Component
         console.log( "here" );
         return (
             <div style={ { marginTop: 10 } }>
-                <h3>Update User Infor</h3>
+                <h3>Update User Information</h3>
                 <form onSubmit={ this.onSubmit }>
 
                     <div className="form-group">
@@ -153,8 +153,8 @@ export default class UserEdit extends Component
                     </div> */}
                     <div className="form-group">
                         <label>Status</label>
-
-                        <select value={ this.state.user_status} onChange={ this.onChangeUserStatus } className="form-control" >
+                        <br/>
+                        <select value={ this.state.user_status} onChange={ this.onChangeUserStatus } className="btn btn-secondary dropdown-toggle" >
                             <option value="ACTIVE">ACTIVE</option>
                             <option value="FLAGGED">FLAGGED</option>
                             <option value="SUSPENDED">SUSPENDED</option>
