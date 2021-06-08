@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
+
 export default class CreateUser extends Component
 {
     constructor( props )
@@ -20,7 +22,12 @@ export default class CreateUser extends Component
             user_password: '',
             user_email: '',
             user_postal_code: '',
-            user_status: 'ACTIVE'
+            user_status: 'ACTIVE',
+            user_errors:{
+                user_password: '',
+                user_email: '',
+                user_postal_code: '', 
+            }
         };
     }
 
@@ -28,6 +35,12 @@ export default class CreateUser extends Component
     // Note that the method for "completed" is missing.
     onChangeUserPassword( e )
     {
+
+
+       
+
+        //END OF JOURNEYS MODIFICATIONS
+
         this.setState( {
             user_password: e.target.value
         } );
@@ -35,6 +48,9 @@ export default class CreateUser extends Component
 
     onChangeUserEmail( e )
     {
+      
+
+
         this.setState( {
             user_email: e.target.value
         } );
@@ -49,9 +65,10 @@ export default class CreateUser extends Component
 
     onSubmit( e )
     {
+        //Validation
         // Prevent form reset, just like regular js.
         e.preventDefault();
-
+      
         // For debugging.
         console.log( `Form submitted:` );
         console.log( `User Email: ${ this.state.user_email }` );
