@@ -3,7 +3,8 @@ import React, { Component } from "react";
 
 // This is the react router package. Not sure why there
 // are three different "as" things.
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // This is to use the bootstrap we installed.
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,13 +14,13 @@ import CreateUser from "./components/user/create-user.component";
 import UsersList from "./components/user/list-user.component";
 // import ConfirmDeleteUser from "./components/user/confirm-delete-user.component";
 
+// import user details
+import UserDetails from "./components/user/details-user.component";
+
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 import Navbar from "./components/navbar.component"
-
-// Fixed this from .png in the tutorial.
-import logo from "./logo.svg";
 
 // This is a class instead of a function called App() like the 
 // default code from this file, not sure why.
@@ -45,6 +46,8 @@ class App extends Component
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
+          
+          <Route path="/user/details-user/:id" exact component={UserDetails} />
 
           <Route path="/user/" exact component={UsersList} />
           <Route path="/user/create" exact component={CreateUser} />

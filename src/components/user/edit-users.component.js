@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-export default class CreateUser extends Component
+export default class EditUser extends Component
 {
     constructor( props )
     {
@@ -33,13 +33,27 @@ export default class CreateUser extends Component
 
     // The following onChange methods handle updates to those properties.
     // Note that the method for "completed" is missing.
+    
+    componentDidMount(){
+        axios.get( 'http://localhost:4000/users/' + this.props.match.params.id )
+        .then(response =>
+            {
+                this.setState({
+                    user_password: response.data.user_password,
+                    user_email: response.data.user_email,
+                    user_postal_code: response.data.user_postal_code,
+                    // user_status: 'ACTIVE',
+                });
+            })
+            .catch(function(error) 
+            {
+                console.log(error);   
+            });
+    }
+    
+    
     onChangeUserPassword( e )
     {
-
-
-       
-
-        //END OF JOURNEYS MODIFICATIONS
 
         this.setState( {
             user_password: e.target.value
@@ -97,6 +111,7 @@ export default class CreateUser extends Component
 
     render()
     {
+        console.log( "here" );
         return (
             <div style={ { marginTop: 10 } }>
                 <h3>Create New User</h3>

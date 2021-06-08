@@ -13,45 +13,55 @@ import axios from 'axios';
 // why is it props.user when it is called with currentUser below?
 // Maybe the constructor wraps stuff passed to it with props?
 const User = props => (
-    <tr>
-        <td >{props.user.user_email}</td>
-        <td >{props.user.user_password}</td>
-        <td >{props.user.user_postal_code}</td>
-        <td >{props.user.user_status}</td>
-        <td>
-            <Link to={ "/user/edit/" + props.user._id }>Edit</Link><br></br>
-            <Link to={ "/user/confirm-delete/" + props.user._id }>Delete</Link><br></br>
-            <Link to={ "/user/details-user/" + props.user._id }>Details</Link>
 
-        </td>
-    </tr>
+    <div className="m-2">
+        <h3>Delete User</h3>
+        <div className="list-group m-2">
+            <li className="list-group-item"><b>Email: </b>{props.user.user_email}</li>
+            <li className="list-group-item"><b>Postal Code: </b>{props.user.user_postal_code}</li>
+            <li className="list-group-item"><b>Status: </b>{props.user.user_status}</li>
+        </div>
+        <div className="d-flex flex-row">
+            <div className="m-2">
+                <Link className="btn btn-light btn-outline-primary" to={ "/user/delete/" + props.user._id }>Delete</Link>
+            </div>
+            <div className="m-2">
+                <Link className="btn btn-primary" to={ "/user/" }>Cancel</Link>
+            </div>
+        </div>
+    </div>
 );
 
 // Make this available to other stuff.
-export default class UsersList extends Component
+export default class ConfirmDeleteUser extends Component
 {
 
     constructor( props )
     {
         super( props );
 
-        // Initialize the state with an empty array called users.
+        console.log( props );
+
+        // Initialize the state with an empty object called user.
         // We have to do this because it's the only way to have
         // member variables in a JS class.
-        this.state = { users: [] };
+        this.state = { 
+            userId: props.match.params.id, 
+            user: {} 
+        };
     }
 
     // Override this method to be called when the UserList component is "mounted" successfully.
     componentDidMount()
     {
-        // Access the default users endpoint.
-        axios.get( 'http://localhost:4000/users/' )
+        // Access the user confirm delete endpoint.
+        axios.get( 'http://localhost:4000/users/confirm-delete/' + this.state.userId )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.
                 // Replace the empty array we initialized the state with
                 // with the response data.
-                this.setState( { users: response.data } );
+                this.setState( { user: response.data } );
             } )
             .catch( function( error )
             {
@@ -60,34 +70,18 @@ export default class UsersList extends Component
     }
 
     // This function maps each item in the array to the User component declared above.
-    userList()
+    userDetails()
     {
-        return this.state.users.map( function( currentUser, i )
-        {
-            return <User user={ currentUser } key={ i } />;
-        } );
+        return <User user={ this.state.user } />;
     }
 
     // This is the one method you absolutely have to define when you extend Component.
     render()
     {
+        console.log( "render confirm-delete-user" );
         return (
             <div>
-                <h3>Users List</h3>
-                <table className="table table-striped" style={ { marginTop: 20 } } >
-                    <thead>
-                        <tr>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Postal Code</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.userList() }
-                    </tbody>
-                </table>
+                { this.userDetails() }
             </div>
         );
     }
