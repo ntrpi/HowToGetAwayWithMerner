@@ -85,6 +85,7 @@ export default class CreateUser extends Component
             return true           
     }
 
+    // Return true if email is valid.
     isValidEmail( email ) 
     {
         return email.includes( "@" );
@@ -108,6 +109,8 @@ export default class CreateUser extends Component
         // console.log( `User Email: ${ this.state.user_email }` );
         // console.log( `User Postal Code: ${ this.state.user_postal_code }` );
 
+
+        // Validate the email value.
         if( !this.isValidEmail( this.state.user_email ) ) {
             // Do error thing.
             console.log( "Email error" );
