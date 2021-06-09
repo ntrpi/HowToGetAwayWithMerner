@@ -31,15 +31,16 @@ export default class CreateUser extends Component
         };
     }
 
-    // The following onChange methods handle updates to those properties.
+    // The following onChange methods handle updates to those prop erties.
     // Note that the method for "completed" is missing.
     onChangeUserPassword( e )
     {
 
+            //Check first for condition
+            //IF NOT E.TARGE
+            
 
-       
 
-        //END OF JOURNEYS MODIFICATIONS
 
         this.setState( {
             user_password: e.target.value
@@ -48,9 +49,11 @@ export default class CreateUser extends Component
 
     onChangeUserEmail( e )
     {
+        if(!e.target.value.includes('@')){
+            console.log('emailError'); 
+            return 
+        }
       
-
-
         this.setState( {
             user_email: e.target.value
         } );
@@ -62,17 +65,41 @@ export default class CreateUser extends Component
             user_postal_code: e.target.value
         } );
     }
+    validate=() =>{
+        let passwordError = "";
+        let emailError ="";
+        let postalCodeError = "";
+        // user_errors:{
+        //     user_password: '',
+            // user_email: 'TEST',
+            // user_postal_code: '', 
+        if (!this.state.user_email.includes('@')){
+            emailError = 'invalid email'
+            // return false
+        }
+
+        if (emailError){
+            this.setState({emailError});
+            return false
+            } 
+            return true           
+    }
 
     onSubmit( e )
     {
         //Validation
         // Prevent form reset, just like regular js.
         e.preventDefault();
-      
+        const isValid = this.validate();
+        if (isValid) {
+          console.log(this.state);
+          // clear form
+        //   this.setState(initialState);
         // For debugging.
-        console.log( `Form submitted:` );
-        console.log( `User Email: ${ this.state.user_email }` );
-        console.log( `User Postal Code: ${ this.state.user_postal_code }` );
+        }
+        // console.log( `Form submitted:` );
+        // console.log( `User Email: ${ this.state.user_email }` );
+        // console.log( `User Postal Code: ${ this.state.user_postal_code }` );
 
         // Create an object to send in the post.
         const newUser = {
@@ -91,7 +118,7 @@ export default class CreateUser extends Component
             user_password: '',
             user_email: '',
             user_postal_code: '',
-            user_status: false
+            //user_status: false
         } );
     }
 
@@ -110,6 +137,7 @@ export default class CreateUser extends Component
                             onChange={ this.onChangeUserEmail }
                         />
                     </div>
+                    <div>{this.state.user_errors.user_email}</div>
                     <div className="form-group">
                         <label>Password: </label>
                         <input
