@@ -35,13 +35,6 @@ export default class CreateUser extends Component
     // Note that the method for "completed" is missing.
     onChangeUserPassword( e )
     {
-
-            //Check first for condition
-            //IF NOT E.TARGE
-            
-
-
-
         this.setState( {
             user_password: e.target.value
         } );
@@ -49,11 +42,6 @@ export default class CreateUser extends Component
 
     onChangeUserEmail( e )
     {
-        if(!e.target.value.includes('@')){
-            console.log('emailError'); 
-            return 
-        }
-      
         this.setState( {
             user_email: e.target.value
         } );
@@ -64,25 +52,6 @@ export default class CreateUser extends Component
         this.setState( {
             user_postal_code: e.target.value
         } );
-    }
-    validate=() =>{
-        let passwordError = "";
-        let emailError ="";
-        let postalCodeError = "";
-        // user_errors:{
-        //     user_password: '',
-            // user_email: 'TEST',
-            // user_postal_code: '', 
-        if (!this.state.user_email.includes('@')){
-            emailError = 'invalid email'
-            // return false
-        }
-
-        if (emailError){
-            this.setState({emailError});
-            return false
-            } 
-            return true           
     }
 
     // Return true if email is valid.
@@ -98,13 +67,7 @@ export default class CreateUser extends Component
         //Validation
         // Prevent form reset, just like regular js.
         e.preventDefault();
-        const isValid = this.validate();
-        if (isValid) {
-          console.log(this.state);
-          // clear form
-        //   this.setState(initialState);
-        // For debugging.
-        }
+
         // console.log( `Form submitted:` );
         // console.log( `User Email: ${ this.state.user_email }` );
         // console.log( `User Postal Code: ${ this.state.user_postal_code }` );
