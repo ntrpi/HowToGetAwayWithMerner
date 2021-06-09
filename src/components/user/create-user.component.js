@@ -85,6 +85,13 @@ export default class CreateUser extends Component
             return true           
     }
 
+    isValidEmail( email ) 
+    {
+        return email.includes( "@" );
+    }
+
+
+
     onSubmit( e )
     {
         //Validation
@@ -100,6 +107,13 @@ export default class CreateUser extends Component
         // console.log( `Form submitted:` );
         // console.log( `User Email: ${ this.state.user_email }` );
         // console.log( `User Postal Code: ${ this.state.user_postal_code }` );
+
+        if( !this.isValidEmail( this.state.user_email ) ) {
+            // Do error thing.
+            console.log( "Email error" );
+            return;
+        }
+
 
         // Create an object to send in the post.
         const newUser = {
