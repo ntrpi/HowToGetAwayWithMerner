@@ -57,7 +57,6 @@ export default class UserEdit extends Component
     
     onChangeUserPassword( e )
     {
-
         this.setState( {
             user_password: e.target.value
         } );
@@ -65,9 +64,6 @@ export default class UserEdit extends Component
 
     onChangeUserEmail( e )
     {
-      
-
-
         this.setState( {
             user_email: e.target.value
         } );
@@ -79,6 +75,7 @@ export default class UserEdit extends Component
             user_postal_code: e.target.value
         } );
     }
+
     onChangeUserStatus(e)
     {
         this.setState({
@@ -91,7 +88,7 @@ export default class UserEdit extends Component
         //Validation
         // Prevent form reset, just like regular js.
         e.preventDefault();
-      
+
         // Create an object to send in the post.
         const obj = {
             user_password: this.state.user_password,
@@ -104,8 +101,8 @@ export default class UserEdit extends Component
         axios.post('http://localhost:4000/users/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
-            this.props.history.push('/user/')
-        
+        // Redirect to list page.
+        this.props.history.push('/user/')
     }
 
     render()
@@ -142,15 +139,7 @@ export default class UserEdit extends Component
                             onChange={ this.onChangeUserPostalCode }
                         />
                     </div>
-                    {/* <div className="form-group">
-                        <label>Status </label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={ this.state.user_status }
-                            onChange={ this.onChangeUserStatus }
-                        />
-                    </div> */}
+
                     <div className="form-group">
                         <label>Status</label>
                         <br/>

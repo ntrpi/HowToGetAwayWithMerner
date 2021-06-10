@@ -5,34 +5,6 @@ import { Link } from 'react-router-dom';
 // axios handles RESTful requests.
 import axios from 'axios';
 
-const User = props => (
-
-    <div className="m-2">
-        <h3>Details</h3>
-        <div className="list-group m-2">
-            <li className="list-group-item"><b>Email: </b>{props.user.user_email}</li>
-            <li className="list-group-item"><b>Postal Code: </b>{props.user.user_postal_code}</li>
-            <li className="list-group-item"><b>Status: </b>{props.user.user_status}</li>
-            <li className="list-group-item">
-                <b>            
-                <Link to={ "/user/edit/" + props.user._id }>Edit</Link></b>
-             </li>
-            <li className="list-group-item "><b>
-            <Link to={ "/user/confirm-delete/" + props.user._id }>Delete</Link></b>
-            </li>
-        </div>
-        
-        {/* <div className="d-flex flex-row">
-            <div className="m-2">
-                <Link className="btn btn-light btn-outline-primary" to={ "/user/delete/" + props.user._id }>Delete</Link>
-            </div>
-            <div className="m-2">
-                <Link className="btn btn-primary" to={ "/user/" }>Cancel</Link>
-            </div>
-        </div> */}
-    </div>
-);
-
 //Make this class globaly usable
 export default class UserDetails extends Component
 {
@@ -45,6 +17,7 @@ export default class UserDetails extends Component
             user:{}
         };
     }
+
     componentDidMount()
     {
         axios.get( 'http://localhost:4000/users/' + this.state.userId )
@@ -58,18 +31,27 @@ export default class UserDetails extends Component
         });
 
     }
-    UserDetails()
-    {
-        return <User user={this.state.user}/>;
-    }
     
     render()
     {
         console.log(" Render Details view");
         return(
-        <div>
-            {this.UserDetails()};
-        </div>
+            <div className="m-2">
+                <h3>Details</h3>
+                <div className="list-group m-2">
+                    <li className="list-group-item"><b>Email: </b>{this.state.user.user_email}</li>
+                    <li className="list-group-item"><b>Postal Code: </b>{this.state.user.user_postal_code}</li>
+                    <li className="list-group-item"><b>Status: </b>{this.state.user.user_status}</li>
+                </div>
+                <div className="d-flex flex-row">
+                    <div className="m-2">
+                        <Link className="btn btn-primary" to={ "/user/edit/" + this.state.user._id }>Edit</Link>
+                    </div>
+                    <div className="m-2">
+                        <Link className="btn btn-primary" to={ "/user/confirm-delete/" + this.state.user._id }>Delete</Link>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

@@ -91,15 +91,10 @@ export default class CreateUser extends Component
 
         // Do the post.
         axios.post('http://localhost:4000/users/add', newUser)
-            .then(res => console.log(res.data));
+            .then(
+                res =>  this.props.history.push( '/user/details/' + res.data.user._id )
+            );
 
-        // Manually reset the form.
-        this.setState( {
-            user_password: '',
-            user_email: '',
-            user_postal_code: '',
-            //user_status: false
-        } );
     }
 
     render()

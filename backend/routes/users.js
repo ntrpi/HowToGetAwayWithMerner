@@ -73,7 +73,7 @@ router.route( '/add' ).post( function( req, res )
     user.save()
         .then( user =>
         {
-            res.status( 200 ).json( { 'user': `${email} added successfully.` } );
+            res.status( 200 ).json( { 'user': user } );
         } )
         .catch( err =>
         {
@@ -93,7 +93,7 @@ router.route( '/delete/:id' ).post( function( req, res )
 
         } else {
             const message = `User ${id} deleted successfully.`;
-            helper.res202( res, messager );
+            helper.res200( res, messager );
         }
     } );
 } );

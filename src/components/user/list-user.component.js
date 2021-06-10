@@ -21,7 +21,7 @@ const User = props => (
         <td>
             <Link to={ "/user/edit/" + props.user._id }>Edit</Link><br></br>
             <Link to={ "/user/confirm-delete/" + props.user._id }>Delete</Link><br></br>
-            <Link to={ "/user/details-user/" + props.user._id }>Details</Link>
+            <Link to={ "/user/details/" + props.user._id }>Details</Link>
 
         </td>
     </tr>

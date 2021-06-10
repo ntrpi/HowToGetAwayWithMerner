@@ -1,0 +1,151 @@
+const helper = require( './routeHelper' );
+var router = require( 'express' ).Router();
+
+// Access the mongoose schemas.
+let Listing = require( '../models/listing.model' );
+
+// Listings index page.
+router.route( '/' ).get( function( req, res )
+{
+    helper.log( "Listings index page." );
+    Listing.find( function( err, listings )
+    {
+        if( err ) {
+            const message = "An error occurred trying to get listings.";
+            helper.res404( res, message, err );
+        } else {
+            res.json( listings );
+        }
+    } );
+} );
+
+// Endpoint to find by ID.
+router.route( '/:id' ).get( function( req, res )
+{
+    let id = req.params.id;
+    Listing.findById( id, function( err, listing )
+    {
+        if( err ) {
+            const message = "An error occurred trying to find listing with id " + id;
+            helper.res404( res, message, err );
+        } else if( !listing ) {
+            helper.log( `Listing with id ${id} not found.` )
+        } else {
+            res.json( listing );
+        }
+    } );
+} );
+
+// Endpoint to update by ID.
+router.route( '/update/:id' ).post( function( req, res )
+{
+    Listing.findById( req.params.id, function( err, listing )
+    {
+        if( err ) {
+            const message = "An error occurred trying to find listing with id " + id;
+            helper.res404( res, message, err );
+        } else if( !listing ) {
+            helper.log( `Listing with id ${id} not found.` )
+        } else {
+            listing.listing_password = req.body.listing_password;
+            listing.listing_email = req.body.listing_email;
+            listing.listing_postal_code = req.body.listing_postal_code;
+            listing.listing_status = req.body.listing_status;
+
+            listing.save().then( listing =>
+            {
+                res.json( 'Listing updated!' );
+            } )
+            .catch( err =>
+            {
+                const message = "An error occurred trying to update listing with id " + id;
+                helper.res404( res, message, err );
+            } );
+        }
+    } );
+} );
+
+// Endpoint to create a new record.
+router.route( '/add' ).post( function( req, res )
+{
+    let listing = new Listing( req.body );
+    const email = listing.listing_email;
+    listing.save()
+        .then( listing =>
+        {
+            res.status( 200 ).json( { 'listing': listing } );
+        } )
+        .catch( err =>
+        {
+            helper.res404( res, `Failed to add ${email}.`, err );
+        } );
+} );
+
+// Endpoint to delete a record.
+router.route( '/delete/:id' ).post( function( req, res )
+{
+    let id = req.params.id;
+    Listing.findByIdAndDelete( id, function( err, listing )
+    {
+        if( !listing ) {
+            const message = "An error occurred trying to delete listing with id " + id;
+            helper.res404( res, message, err );
+
+        } else {
+            const message = `Listing ${id} deleted successfully.`;
+            helper.res200( res, messager );
+        }
+    } );
+} );
+
+// Endpoint to confirm a delete.
+router.route( '/confirm-delete/:id' ).get( function( req, res )
+{
+    let id = req.params.id;
+    Listing.findById( id, function( err, listing )
+    {
+        helper.log( "in confirm delete" );
+        if( err ) {
+            const message = "An error occurred trying to find listing to confirm delete with id " + id;
+            helper.res404( res, message, err );
+
+        } else if( !listing ) {
+            helper.log( `Listing for confirm delete with id ${id} not found.` )
+
+        } else {
+            res.json( listing );
+        }
+    } );
+} );
+
+
+// Endpoint to log in a listing.
+router.route( '/login' ).post( function( req, res )
+{
+    const email = req.body.listing_email;
+    const password = req.body.listing_password;
+    const query = Listing.where( { listing_email: email } );
+    query.findOne( function ( err, listing ) {
+        if( err ) {
+            console.log( err );
+        } else if( !listing ) {
+            console.log( `Listing with email ${email} not found.` )
+        } else {
+            //https://coderrocketfuel.com/article/store-passwords-in-mongodb-with-node-js-mongoose-and-bcrypt
+            // 2021/06/06
+            listing.comparePassword( password, function( matchError, isMatch ){
+                if( matchError ) {
+                    res.send( "A log in error occurred." );
+                    console.log( matchError );
+                } else if( !isMatch ) {
+                    res.send( "Password is not a match." );
+                } else {
+                    res.status( 200 ).json( { 'listing': `${email} successfully logged in.`});
+                }
+            } );
+            res.json( listing );
+        }
+    } );
+} );
+
+module.exports = router;
