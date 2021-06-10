@@ -86,35 +86,26 @@ export default class CreateUser extends Component
         return true;
     }
 
-    //Password validation
+    // Password validation
+    // Return null if the password is valid, otherwise return a message.
     isValidPassword( password ) 
     {
         let comparePassword = document.getElementById( "password" ).value;
         let PasswordError = "";
+
         //Checks against REGEX
         if( ( password == null ) || ( password == "" ) ) {
-            PasswordError = "Password Required ";
-            this.setState( { PasswordError } );
-            return false;
+            return "Password required.";
         }
         if( ( password.length < 7 ) || ( password == "" ) ) {
-            PasswordError = "Password must be at least 7 characters long";
-            this.setState( { PasswordError } );
-            return false;
+            return "Password must be at least 7 characters long";
         }
         if( !( password == comparePassword ) ) {
-            PasswordError = "Passwords do not match";
-            this.setState( { PasswordError } );
-            return false;
+            return "Passwords do not match";
         }
-        //If it does not pass set state of error mesage and return false
-        else {
-            PasswordError = "  ";
-            comparePassword = "";
-            this.setState( { PasswordError } );
-        }
-        //else return true
-        return true;
+
+        // Password is valid, return null.
+        return null;
     }
 
     isValidPostalCode( postalCode ) 
@@ -145,12 +136,19 @@ export default class CreateUser extends Component
         // Prevent form reset, just like regular js.
         e.preventDefault();
 
+        this.setState( {
+            emailError: "",
+            passwordError: "",
+            postalCodeError: "",
+        } );
+
         // Validate the email value.
-        if( !this.isValidEmail( this.state.user_email ) ) {
-            // Do error thing.
-            // alert( "Email error" );
+        let result = this.isValidEmail( this.state.user_email );
+        if( result !== null ) {
+            this.setState( { emailError: result } )
             return;
         }
+        
         if( !this.isValidPassword( this.state.user_password ) ) {
             return;
         }
