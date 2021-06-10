@@ -57,7 +57,85 @@ export default class CreateUser extends Component
     // Return true if email is valid.
     isValidEmail( email ) 
     {
-        return email.includes( "@" );
+        let emailError = "";
+        let reset= ""
+        //Checks against REGEX
+        if ((email == null) || email == ""){
+            emailError="Email required"
+                this.setState({emailError});
+                return false;
+              
+        }
+        if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+            emailError="Invalid Email"
+                this.setState({emailError});
+                return false;
+              
+        }
+        
+        else{
+            emailError=" "
+            // if (emailError) {
+                this.setState({emailError});
+            
+        }
+        //If it does not pass set state of error mesage and return false
+        
+        
+          //else return true
+          return true
+    }
+    //Password validation
+    isValidPassword( password ) 
+    {
+        let comparePassword = document.getElementById("password").value;
+        let PasswordError = "";
+        //Checks against REGEX
+        if ((password == null) || (password=="")){
+            PasswordError="Password Required "
+            this.setState({PasswordError});
+            return false;
+        }
+        if ((password.length< 7) || (password=="")){
+            PasswordError="Password must be at least 7 characters long"
+            this.setState({PasswordError});
+            return false;
+        }
+        if (!(password == comparePassword)){
+            PasswordError="Passwords do not match"
+            this.setState({PasswordError});
+            return false;
+        }
+        //If it does not pass set state of error mesage and return false
+        else{
+            PasswordError="  "
+            comparePassword=""
+            this.setState({PasswordError});
+        }
+          //else return true
+          return true
+    }
+    isValidPostalCode( postalCode ) 
+    {
+        let postalCodeError = "";
+        //Checks against null/regex
+        if ((postalCode == null) || (postalCode=="")){
+            postalCodeError="postalCode Required "
+            this.setState({postalCodeError});
+            return false;
+        }
+        if (!/^[a-zA-Z]\d[a-zA-Z][ -]?\d[a-zA-Z]\d$/.test(postalCode)){
+            postalCodeError="Must be a valid Canadian postal code"
+            this.setState({postalCodeError});
+            return false;
+        }
+        //If it does not pass set state of error mesage and return false
+        else{
+            postalCodeError="  "
+            this.setState({postalCodeError});
+        }
+          //else return true
+          return true
     }
 
 
@@ -76,7 +154,13 @@ export default class CreateUser extends Component
         // Validate the email value.
         if( !this.isValidEmail( this.state.user_email ) ) {
             // Do error thing.
-            console.log( "Email error" );
+            // alert( "Email error" );
+            return;
+        }
+        if( !this.isValidPassword( this.state.user_password ) ) {
+            return;
+        }
+        if( !this.isValidPostalCode( this.state.user_postal_code ) ) {
             return;
         }
 
@@ -98,6 +182,7 @@ export default class CreateUser extends Component
             user_password: '',
             user_email: '',
             user_postal_code: '',
+            check_password:''
             //user_status: false
         } );
     }
@@ -117,7 +202,9 @@ export default class CreateUser extends Component
                             onChange={ this.onChangeUserEmail }
                         />
                     </div>
-                    <div>{this.state.user_errors.user_email}</div>
+                    <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.emailError}
+                    </div>
                     <div className="form-group">
                         <label>Password: </label>
                         <input
@@ -125,6 +212,19 @@ export default class CreateUser extends Component
                             className="form-control"
                             value={ this.state.user_password }
                             onChange={ this.onChangeUserPassword }
+                        />
+                    </div>
+                    <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.PasswordError}
+                    </div>
+                    <div className="form-group">
+                        <label>Repeat Password: </label>
+                        <input
+                            type="text"
+                            value={ this.state.check_password }
+
+                            className="form-control"
+                            id="password"
                         />
                     </div>
                     <div className="form-group">
@@ -136,7 +236,9 @@ export default class CreateUser extends Component
                             onChange={ this.onChangeUserPostalCode }
                         />
                     </div>
-
+                    <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.postalCodeError}
+                    </div>
                     <div className="form-group m-2">
                         <input type="submit" value="Create User" className="btn btn-primary" />
                     </div>

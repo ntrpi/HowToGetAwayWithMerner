@@ -15,21 +15,13 @@ const User = props => (
             <li className="list-group-item"><b>Status: </b>{props.user.user_status}</li>
             <li className="list-group-item">
                 <b>            
-                <Link to={ "/user/edit/" + props.user._id }>Edit</Link></b>
+                <Link to={ "/user/edit/" + props.user._id }>Edit</Link>
+                </b>
              </li>
             <li className="list-group-item "><b>
             <Link to={ "/user/confirm-delete/" + props.user._id }>Delete</Link></b>
             </li>
-        </div>
-        
-        {/* <div className="d-flex flex-row">
-            <div className="m-2">
-                <Link className="btn btn-light btn-outline-primary" to={ "/user/delete/" + props.user._id }>Delete</Link>
-            </div>
-            <div className="m-2">
-                <Link className="btn btn-primary" to={ "/user/" }>Cancel</Link>
-            </div>
-        </div> */}
+        </div>        
     </div>
 );
 
