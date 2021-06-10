@@ -14,19 +14,12 @@ let Listing = new Schema( {
     price: {
         type: Number,
         // TODO: format as currency
-        required: true
-    },
-
-    lat: {
-        type: Number
-    },
-
-    lon: {
-        type: Number
+        default: 0
     },
 
     user_id: {
-        type: String
+        type: String,
+        required: true
     },
 
     category_id: {

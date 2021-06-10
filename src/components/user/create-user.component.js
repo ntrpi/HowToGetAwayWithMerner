@@ -148,7 +148,7 @@ export default class CreateUser extends Component
             this.setState( { emailError: result } )
             return;
         }
-        
+
         if( !this.isValidPassword( this.state.user_password ) ) {
             return;
         }
@@ -182,7 +182,7 @@ export default class CreateUser extends Component
 
                     <div className="form-group">
                         <label>Email: </label>
-                        <input type="text"
+                        <input type="email"
                             className="form-control"
                             value={ this.state.user_email }
                             onChange={ this.onChangeUserEmail }
@@ -194,7 +194,7 @@ export default class CreateUser extends Component
                     <div className="form-group">
                         <label>Password: </label>
                         <input
-                            type="text"
+                            type="password"
                             className="form-control"
                             value={ this.state.user_password }
                             onChange={ this.onChangeUserPassword }
@@ -206,7 +206,7 @@ export default class CreateUser extends Component
                     <div className="form-group">
                         <label>Repeat Password: </label>
                         <input
-                            type="text"
+                            type="password"
                             value={ this.state.check_password }
 
                             className="form-control"
