@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-export default class UserEdit extends Component
+export default class EditUser extends Component
 {
     constructor( props )
     {
