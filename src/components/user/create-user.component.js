@@ -54,86 +54,59 @@ export default class CreateUser extends Component
         } );
     }
 
-    // Return true if email is valid.
-    // isValidEmail( email ) 
-    // {
-    //     let emailError = "";
-    //     let reset = "";
-    //     //Checks against REGEX
-    //     if( ( email == null ) || email == "" ) {
-    //         emailError = "Email required";
-    //         this.setState( { emailError } );
-    //         return false;
+    //Function for validating Email
+    isValidEmail( email ) 
+    {
+        let emailError = "";
+        let reset = "";
+        //Checks against NULL
+        if( ( email == null ) || email == "" ) {
+            return "Email required";
+        }
+        //Checks against regex
+        if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
+            return "Invalid Email";
+        }
+        return null;
+    }
 
-    //     }
-    //     if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
-    //         emailError = "Invalid Email";
-    //         this.setState( { emailError } );
-    //         return false;
-
-    //     }
-
-    //     else {
-    //         emailError = " ";
-    //         // if (emailError) {
-    //         this.setState( { emailError } );
-
-    //     }
-    //     //If it does not pass set state of error mesage and return false
-
-
-    //     //else return true
-    //     return true;
-    // }
-
-    // Password validation
-    // Return null if the password is valid, otherwise return a message.
+    //Function for validating password
     isValidPassword( password ) 
     {
         let comparePassword = document.getElementById( "password" ).value;
-        let PasswordError = "";
-
-        //Checks against REGEX
+        let passwordError = "";
+        //Checks for bull entry
         if( ( password === null ) || ( password === "" ) ) {
             return "Password required.";
         }
+        //Checks length
         if( ( password.length < 7 ) || ( password === "" ) ) {
             return "Password must be at least 7 characters long";
         }
+        //Checks that both passwords match
         if( !( password === comparePassword ) ) {
             return "Passwords do not match";
         }
-
         // Password is valid, return null.
         return null;
     }
 
-    // isValidPostalCode( postalCode ) 
-    // {
-    //     let postalCodeError = "";
-    //     //Checks against null/regex
-    //     if( ( postalCode == null ) || ( postalCode == "" ) ) {
-    //         postalCodeError = "postalCode Required ";
-    //         this.setState( { postalCodeError } );
-    //         return false;
-    //     }
-    //     if( !/^[a-zA-Z]\d[a-zA-Z][ -]?\d[a-zA-Z]\d$/.test( postalCode ) ) {
-    //         postalCodeError = "Must be a valid Canadian postal code";
-    //         this.setState( { postalCodeError } );
-    //         return false;
-    //     }
-    //     //If it does not pass set state of error mesage and return false
-    //     else {
-    //         postalCodeError = "  ";
-    //         this.setState( { postalCodeError } );
-    //     }
-    //     //else return true
-    //     return true;
-    // }
+    isValidPostalCode( postalCode ) 
+    {
+        let postalCodeError = "";
+        //Checks against null
+        if( ( postalCode == null ) || ( postalCode == "" ) ) {
+            return "postalCode Required ";
+        }
+        //Checks against RegEx NOTE:CANADIAN POSTALCODE ONLY
+        if( !/^[a-zA-Z]\d[a-zA-Z][ -]?\d[a-zA-Z]\d$/.test( postalCode ) ) {
+            return "Must be a valid Canadian postal code";
+        }
+        return null;
+    }
 
     onSubmit( e )
     {
-        // Prevent form reset, just like regular js.
         e.preventDefault();
 
         this.setState( {
@@ -141,20 +114,25 @@ export default class CreateUser extends Component
             passwordError: "",
             postalCodeError: "",
         } );
-
-        // Validate the email value.
-        let result = this.isValidPassword( this.state.user_password );
-        if( result !== null ) {
-            this.setState( { passwordError: result } )
+        let emailResult = this.isValidEmail(this.state.user_email);
+        if( emailResult !== null ) {
+            this.setState( { emailError: emailResult} )
+            return;
+        }
+        // Validate the Paswsword value.
+        let passwordResult = this.isValidPassword( this.state.user_password );
+        if( passwordResult !== null ) {
+            this.setState( { passwordError: passwordResult } )
             return;
         }
 
-        // if( !this.isValidEmail( this.state.user_email ) ) {
-        //     return;
-        // }
-        // if( !this.isValidPostalCode( this.state.user_postal_code ) ) {
-        //     return;
-        // }
+        
+        //Validate user PostalCode
+        let postalCodeResult = this.isValidPostalCode(this.state.user_postal_code)
+        if( postalCodeResult !== null )  {
+            this.setState( { postalCodeError : postalCodeResult} )
+            return;
+        }
 
 
         // Create an object to send in the post.
@@ -201,7 +179,7 @@ export default class CreateUser extends Component
                         />
                     </div>
                     <div style={ { fontSize: 12, color: "red" } }>
-                        { this.state.PasswordError }
+                        { this.state.passwordError }
                     </div>
                     <div className="form-group">
                         <label>Repeat Password: </label>
