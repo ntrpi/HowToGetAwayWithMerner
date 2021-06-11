@@ -55,36 +55,36 @@ export default class CreateUser extends Component
     }
 
     // Return true if email is valid.
-    isValidEmail( email ) 
-    {
-        let emailError = "";
-        let reset = "";
-        //Checks against REGEX
-        if( ( email == null ) || email == "" ) {
-            emailError = "Email required";
-            this.setState( { emailError } );
-            return false;
+    // isValidEmail( email ) 
+    // {
+    //     let emailError = "";
+    //     let reset = "";
+    //     //Checks against REGEX
+    //     if( ( email == null ) || email == "" ) {
+    //         emailError = "Email required";
+    //         this.setState( { emailError } );
+    //         return false;
 
-        }
-        if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
-            emailError = "Invalid Email";
-            this.setState( { emailError } );
-            return false;
+    //     }
+    //     if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
+    //         emailError = "Invalid Email";
+    //         this.setState( { emailError } );
+    //         return false;
 
-        }
+    //     }
 
-        else {
-            emailError = " ";
-            // if (emailError) {
-            this.setState( { emailError } );
+    //     else {
+    //         emailError = " ";
+    //         // if (emailError) {
+    //         this.setState( { emailError } );
 
-        }
-        //If it does not pass set state of error mesage and return false
+    //     }
+    //     //If it does not pass set state of error mesage and return false
 
 
-        //else return true
-        return true;
-    }
+    //     //else return true
+    //     return true;
+    // }
 
     // Password validation
     // Return null if the password is valid, otherwise return a message.
@@ -94,13 +94,13 @@ export default class CreateUser extends Component
         let PasswordError = "";
 
         //Checks against REGEX
-        if( ( password == null ) || ( password == "" ) ) {
+        if( ( password === null ) || ( password === "" ) ) {
             return "Password required.";
         }
-        if( ( password.length < 7 ) || ( password == "" ) ) {
+        if( ( password.length < 7 ) || ( password === "" ) ) {
             return "Password must be at least 7 characters long";
         }
-        if( !( password == comparePassword ) ) {
+        if( !( password === comparePassword ) ) {
             return "Passwords do not match";
         }
 
@@ -108,28 +108,28 @@ export default class CreateUser extends Component
         return null;
     }
 
-    isValidPostalCode( postalCode ) 
-    {
-        let postalCodeError = "";
-        //Checks against null/regex
-        if( ( postalCode == null ) || ( postalCode == "" ) ) {
-            postalCodeError = "postalCode Required ";
-            this.setState( { postalCodeError } );
-            return false;
-        }
-        if( !/^[a-zA-Z]\d[a-zA-Z][ -]?\d[a-zA-Z]\d$/.test( postalCode ) ) {
-            postalCodeError = "Must be a valid Canadian postal code";
-            this.setState( { postalCodeError } );
-            return false;
-        }
-        //If it does not pass set state of error mesage and return false
-        else {
-            postalCodeError = "  ";
-            this.setState( { postalCodeError } );
-        }
-        //else return true
-        return true;
-    }
+    // isValidPostalCode( postalCode ) 
+    // {
+    //     let postalCodeError = "";
+    //     //Checks against null/regex
+    //     if( ( postalCode == null ) || ( postalCode == "" ) ) {
+    //         postalCodeError = "postalCode Required ";
+    //         this.setState( { postalCodeError } );
+    //         return false;
+    //     }
+    //     if( !/^[a-zA-Z]\d[a-zA-Z][ -]?\d[a-zA-Z]\d$/.test( postalCode ) ) {
+    //         postalCodeError = "Must be a valid Canadian postal code";
+    //         this.setState( { postalCodeError } );
+    //         return false;
+    //     }
+    //     //If it does not pass set state of error mesage and return false
+    //     else {
+    //         postalCodeError = "  ";
+    //         this.setState( { postalCodeError } );
+    //     }
+    //     //else return true
+    //     return true;
+    // }
 
     onSubmit( e )
     {
@@ -143,18 +143,18 @@ export default class CreateUser extends Component
         } );
 
         // Validate the email value.
-        let result = this.isValidEmail( this.state.user_email );
+        let result = this.isValidPassword( this.state.user_password );
         if( result !== null ) {
-            this.setState( { emailError: result } )
+            this.setState( { passwordError: result } )
             return;
         }
 
-        if( !this.isValidPassword( this.state.user_password ) ) {
-            return;
-        }
-        if( !this.isValidPostalCode( this.state.user_postal_code ) ) {
-            return;
-        }
+        // if( !this.isValidEmail( this.state.user_email ) ) {
+        //     return;
+        // }
+        // if( !this.isValidPostalCode( this.state.user_postal_code ) ) {
+        //     return;
+        // }
 
 
         // Create an object to send in the post.
