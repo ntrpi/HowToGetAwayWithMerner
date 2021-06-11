@@ -36,6 +36,23 @@ router.route( '/:id' ).get( function( req, res )
     } );
 } );
 
+// Endpoint to find listings for user by user ID.
+router.route( '/user/:id' ).get( function( req, res )
+{
+    let userId = req.params.id;
+    Listing.find( { user_id: userId }, function( err, listings ) 
+    {
+        if( err ) {
+            const message = "An error occurred trying to find listings for user with id " + userId;
+            helper.res404( res, message, err );
+        } else if( !listings ) {
+            helper.log( `Listings for user with id ${userId} not found.` )
+        } else {
+            res.json( listings );
+        }
+    } );
+} );
+
 // Endpoint to update by ID.
 router.route( '/update/:id' ).post( function( req, res )
 {

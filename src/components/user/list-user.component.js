@@ -28,7 +28,7 @@ const User = props => (
 );
 
 // Make this available to other stuff.
-export default class UsersList extends Component
+export default class ListUsers extends Component
 {
 
     constructor( props )
