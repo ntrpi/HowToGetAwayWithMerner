@@ -49,6 +49,8 @@ connection.once( 'open', function()
 const userRouter = require( './routes/users' );
 app.use( '/users', userRouter );
 
+const listingRouter = require( './routes/listings' );
+app.use( '/listings', listingRouter );
 
 app.listen( PORT, function()
 {
