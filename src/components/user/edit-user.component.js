@@ -82,13 +82,87 @@ export default class EditUser extends Component
             user_status: e.target.value
         })
     }
+ //Function for validating Email
+    isValidEmail( email ) 
+    {
+        let emailError = "";
+        let reset = "";
+        //Checks against NULL
+        if( ( email == null ) || email == "" ) {
+            return "Email required";
+        }
+        //Checks against regex
+        if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
+            return "Invalid Email";
+        }
+        return null;
+    }
+
+    //Function for validating password
+    isValidPassword( password ) 
+    {
+        let comparePassword = document.getElementById( "password" ).value;
+        let passwordError = "";
+        //Checks for bull entry
+        if( ( password === null ) || ( password === "" ) ) {
+            return "Password required.";
+        }
+        //Checks length
+        if( ( password.length < 7 ) || ( password === "" ) ) {
+            return "Password must be at least 7 characters long";
+        }
+        //Checks that both passwords match
+        if( !( password === comparePassword ) ) {
+            return "Passwords do not match";
+        }
+        // Password is valid, return null.
+        return null;
+    }
+
+    isValidPostalCode( postalCode ) 
+    {
+        let postalCodeError = "";
+        //Checks against null
+        if( ( postalCode == null ) || ( postalCode == "" ) ) {
+            return "postalCode Required ";
+        }
+        //Checks against RegEx NOTE:CANADIAN POSTALCODE ONLY
+        if( !/^[a-zA-Z]\d[a-zA-Z][ -]?\d[a-zA-Z]\d$/.test( postalCode ) ) {
+            return "Must be a valid Canadian postal code";
+        }
+        return null;
+    }
 
     onSubmit( e )
     {
         //Validation
         // Prevent form reset, just like regular js.
         e.preventDefault();
+        this.setState( {
+            emailError: "",
+            passwordError: "",
+            postalCodeError: "",
+        } );
+        //Validate the email
+        let emailResult = this.isValidEmail(this.state.user_email);
+        if( emailResult !== null ) {
+            this.setState( { emailError: emailResult} )
+            return;
+        }
+        // Validate the Paswsword value.
+        let passwordResult = this.isValidPassword( this.state.user_password );
+        if( passwordResult !== null ) {
+            this.setState( { passwordError: passwordResult } )
+            return;
+        }
 
+        
+        //Validate user PostalCode
+        let postalCodeResult = this.isValidPostalCode(this.state.user_postal_code)
+        if( postalCodeResult !== null )  {
+            this.setState( { postalCodeError : postalCodeResult} )
+            return;
+        }
         // Create an object to send in the post.
         const obj = {
             user_password: this.state.user_password,

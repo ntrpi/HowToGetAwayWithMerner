@@ -64,10 +64,19 @@ router.route( '/update/:id' ).post( function( req, res )
         } else if( !listing ) {
             helper.log( `Listing with id ${id} not found.` )
         } else {
-            listing.listing_password = req.body.listing_password;
-            listing.listing_email = req.body.listing_email;
-            listing.listing_postal_code = req.body.listing_postal_code;
-            listing.listing_status = req.body.listing_status;
+            listing.title = req.body.title;
+            listing.description = req.body.description;
+            listing.price = req.body.price;
+            listing.user_id = req.body.user_id;
+            listing.category_id = req.body.category_id;
+            listing.is_flagged = req.body.is_flagged;
+           
+            // title: response.data.title,
+            // description: response.data.description,
+            // price: response.data.price,
+            // user_id: response.data.user_id,
+            // category_id: response.data.category_id,
+            // is_flagged: response.data.is_flagged,
 
             listing.save().then( listing =>
             {
