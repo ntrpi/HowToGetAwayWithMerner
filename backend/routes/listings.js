@@ -71,12 +71,6 @@ router.route( '/update/:id' ).post( function( req, res )
             listing.category_id = req.body.category_id;
             listing.is_flagged = req.body.is_flagged;
            
-            // title: response.data.title,
-            // description: response.data.description,
-            // price: response.data.price,
-            // user_id: response.data.user_id,
-            // category_id: response.data.category_id,
-            // is_flagged: response.data.is_flagged,
 
             listing.save().then( listing =>
             {
@@ -119,9 +113,10 @@ router.route( '/delete/:id' ).post( function( req, res )
 
         } else {
             const message = `Listing ${id} deleted successfully.`;
-            helper.res200( res, messager );
+            helper.res200( res, message );
         }
     } );
+    // Note removed r from message
 } );
 
 // Endpoint to confirm a delete.

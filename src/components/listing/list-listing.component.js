@@ -19,7 +19,7 @@ const Listing = props => (
         <td >{props.listing.price}</td>
         <td >{props.listing.category_id}</td>
         <td >{props.listing.user_id}</td>
-        <td >{props.listing.is_flagged}</td>
+        <td >{props.listing.is_flagged.toString()}</td>
         <td>
             <Link to={ "/listing/edit/" + props.listing._id }>Edit</Link><br></br>
             <Link to={ "/listing/confirm-delete/" + props.listing._id }>Delete</Link><br></br>

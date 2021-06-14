@@ -12,6 +12,9 @@ export default class EditListing extends Component
         this.onChangePrice = this.onChangePrice.bind( this );
         this.onChangeCategory = this.onChangeCategory.bind( this );
         this.onChangeUserID = this.onChangeUserID.bind( this );
+
+        this.onChangeListingFlagged = this.onChangeListingFlagged.bind( this );
+
         this.onSubmit = this.onSubmit.bind( this );
 //STATE IS HOW YOU CREATE VAR IN REACT
         this.state = {
@@ -44,7 +47,11 @@ componentDidMount(){
             console.log(error);   
         });
 }
-
+    onChangeListingFlagged(e){
+        this.setState( {
+        is_flagged: e.target.value
+        } );
+    }
     onChangeTitle( e )
     {
         this.setState( {
@@ -158,7 +165,16 @@ componentDidMount(){
                         />
                         
                     </div>
-                   
+                    <div className="form-group">
+                        <label>Flaged</label>
+                        <br/>
+                        <select value={ this.state.is_flagged} onChange={ this.onChangeListingFlagged } className="btn btn-secondary dropdown-toggle" >
+                            <option value={true}>FLAGGED</option>
+                            <option value={false}>NOT FLAGGED</option>
+                          
+
+                        </select>
+                    </div>
 
                     <div className="form-group m-2">
                         <input type="submit" value="Update Listing" className="btn btn-primary" />

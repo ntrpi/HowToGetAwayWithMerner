@@ -20,7 +20,7 @@ export default class CreateListing extends Component
             price: '',
             user_id: '',
             category_id: '',
-            is_flagged: false   
+            is_flagged: 'false'   
         };
     }
 
