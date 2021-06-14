@@ -3,6 +3,7 @@ var router = require( 'express' ).Router();
 
 // Access the mongoose schemas.
 let Listing = require( '../models/listing.model' );
+let User = require( '../models/user.model' );
 
 // Listings index page.
 router.route( '/' ).get( function( req, res )
@@ -70,7 +71,6 @@ router.route( '/update/:id' ).post( function( req, res )
             listing.user_id = req.body.user_id;
             listing.category_id = req.body.category_id;
             listing.is_flagged = req.body.is_flagged;
-           
 
             listing.save().then( listing =>
             {
@@ -90,15 +90,27 @@ router.route( '/add' ).post( function( req, res )
 {
     let listing = new Listing( req.body );
     const email = listing.listing_email;
-    listing.save()
-        .then( listing =>
-        {
-            res.status( 200 ).json( { 'listing': listing } );
-        } )
-        .catch( err =>
-        {
-            helper.res404( res, `Failed to add ${email}.`, err );
-        } );
+    User.findOne( { user_email: email }, function( err, user )
+    {
+        if( err ) {
+            const message = "An error occurred trying to find user with email " + userEmail;
+            helper.res404( res, message, err );
+        } else if( !user ) {
+            helper.log( `User with email ${user_email} not found.` )
+        } else {
+            const userId = user._id;
+
+            listing.save()
+            .then( listing =>
+            {
+                res.status( 200 ).json( { 'listing': listing } );
+            } )
+            .catch( err =>
+            {
+                helper.res404( res, `Failed to add listing "${listing.title}".`, err );
+            } );
+        }
+    } );
 } );
 
 // Endpoint to delete a record.

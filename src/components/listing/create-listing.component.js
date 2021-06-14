@@ -11,14 +11,14 @@ export default class CreateListing extends Component
         this.onChangeDescription = this.onChangeDescription.bind( this );
         this.onChangePrice = this.onChangePrice.bind( this );
         this.onChangeCategory = this.onChangeCategory.bind( this );
-        this.onChangeUserID = this.onChangeUserID.bind( this );
+        this.onChangeUserEmail = this.onChangeUserEmail.bind( this );
         this.onSubmit = this.onSubmit.bind( this );
 //STATE IS HOW YOU CREATE VAR IN REACT
         this.state = {
             title: '',
             description: '',
             price: '',
-            user_id: '',
+            user_email: '',
             category_id: '',
             is_flagged: 'false'   
         };
@@ -42,10 +42,10 @@ export default class CreateListing extends Component
             price: e.target.value
         } );
     }
-    onChangeUserID(e)
+    onChangeUserEmail(e)
     {
         this.setState( {
-            user_id: e.target.value
+            user_email: e.target.value
         });
     }
     onChangeCategory( e )
@@ -66,7 +66,7 @@ export default class CreateListing extends Component
             title: this.state.title,
             description: this.state.description,
             price: this.state.price,
-            user_id: this.state.user_id,
+            user_email: this.state.user_email,
             category_id: this.state.category_id,
             is_flagged: this.state.is_flagged
         };
@@ -121,8 +121,8 @@ export default class CreateListing extends Component
                             <input
                                 type="text"
                                 className="form-control"
-                                value={ this.state.user_id }
-                                onChange={ this.onChangeUserID}
+                                value={ this.state.user_email }
+                                onChange={ this.onChangeUserEmail}
                         />
                     </div>
                     

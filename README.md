@@ -11,6 +11,55 @@
           <li><a href="#steps">Steps</li>
         </ul>
     </li>
+    <li><a href="#about">Features</a>
+      <ul>
+        <li><a href="#users">Users</a></li>
+        <li><a href="#roles">Roles</a></li>
+        <li><a href="#listings">Listings</a></li>
+        <li><a href="#images">Images</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#messages">Messages</a></li>
+      </ul>
+    </li>
+    <li><a href="#about">Contributions</a>
+      <ul>
+        <li><a href="#asia">Asia</a>
+          <ul>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#teamwork">Teamwork</a></li>
+          </ul>
+        </li>
+        <li><a href="#danyal">Danyal</a>
+          <ul>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#teamwork">Teamwork</a></li>
+          </ul>
+        </li>
+        <li><a href="#jemi">Jemi</a>
+          <ul>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#teamwork">Teamwork</a></li>
+          </ul>
+        </li>
+        <li><a href="#journey">Journey</a>
+          <ul>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#teamwork">Teamwork</a></li>
+          </ul>
+        </li>
+        <li><a href="#sandra">Sandra</a>
+          <ul>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#teamwork">Teamwork</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li>
       <a href="#part-1-notes">Part 1 Notes</a>
       <ul>
@@ -63,6 +112,65 @@ You will also need to have NodeJs installed.
 
 You're good to go!
 
+## Features
+
+### Users
+
+### Roles
+
+### Listings
+
+### Images
+
+### Categories
+
+### Messages
+
+## Contributions
+
+### Asia
+#### Project
+#### Features
+#### Teamwork
+
+### Danyal
+#### Project
+#### Features
+#### Teamwork
+
+### Jemi
+#### Project
+#### Features
+#### Teamwork
+
+### Journey
+#### Project
+#### Features
+#### Teamwork
+
+### Sandra
+
+#### Project
+* Initialized repo.
+* Initialized project with the code produced while completing a MERN stack tutorial.
+* Created and maintained readme.
+
+#### Features
+* Implemented database design agreed on by the team. I simplified a couple of things to keep the scope of the project reasonable.
+* Modified the folder structure suggested by the tutorial to be more modular.
+* Modified server.js to use a .env file, following the recommendations of two team members who had completed a different tutorial.
+* Implemented the routes/endpoints for the back end.
+* Modified App.js by taking out the nav bar and making it a component as suggested by others on the team.
+
+#### Teamwork
+* Attended all meetings.
+* Communicated with team members about progress regularly.
+* Followed up regularly with team members to make sure they weren't waiting on my work to get their's done.
+* Worked with Journey on the Users feature.
+* Gave Journey some hints for implementing client side validation, then did a code review.
+* Helped Jemi set up her DB on Atlas.
+* Made sure everyone could run the app after I initialized it in the repo.
+
 ## Part 1 Notes
 
 These are just notes I made while following the tutorial.
@@ -111,8 +219,6 @@ See comments in App.js and the .component files.
 ## Part 2 Notes
 
 ### Initialize the Back End
-
-I installed mongoose, but I didn't use it to create the database, only to access it afterwards. I created a db on Atlas, and used Mongo Client to insert stuff into it instead. Not sure now why I did this, except maybe I didn't want to deal with the whole mongoose schema thing right now.
 
 <strong>If you are part of my 5303 group stop when you get to the Installing MondoDB section. This is where I deviated to use Atlas instead of a local instance of MongoDb. Check backend/server.js to see how it differs from the tutorial.
 </strong>
