@@ -49,6 +49,12 @@ connection.once( 'open', function()
 const userRouter = require( './routes/users' );
 app.use( '/users', userRouter );
 
+const roleRouter = require( './routes/roles' );
+app.use( '/roles', roleRouter );
+
+const userRoleRouter = require( './routes/userRoles' );
+app.use( '/userRoles', userRoleRouter );
+
 const listingRouter = require( './routes/listings' );
 app.use( '/listings', listingRouter );
 

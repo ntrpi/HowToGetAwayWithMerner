@@ -16,6 +16,16 @@ import ConfirmDeleteUser from "./components/user/confirm-delete-user.component";
 import UserDetails from "./components/user/details-user.component";
 import EditUser from "./components/user/edit-user.component";
 
+// Role components.
+import CreateRole from "./components/role/create-role.component";
+import ListRoles from "./components/role/list-role.component";
+import ConfirmDeleteRole from "./components/role/confirm-delete-role.component";
+
+// Role components.
+import CreateUserRole from "./components/userRole/create-userRole.component";
+import ListUserRoles from "./components/userRole/list-userRole.component";
+import ConfirmDeleteUserRole from "./components/userRole/confirm-delete-userRole.component";
+
 // Listing components.
 import ListListings from "./components/listing/list-listing.component";
 import CreateListing from "./components/listing/create-listing.component";
@@ -59,6 +69,16 @@ class App extends Component
           <Route path="/user/confirm-delete/:id" exact component={ConfirmDeleteUser} />
           <Route path="/user/details/:id" exact component={UserDetails} />
           <Route path="/user/edit/:id" exact component={EditUser} />
+
+          {/* Roles Components           */}
+          <Route path="/role/" exact component={ListRoles} />
+          <Route path="/role/create" exact component={CreateRole} />
+          <Route path="/role/confirm-delete/:id" exact component={ConfirmDeleteRole} />
+
+          {/* UserRoles Components           */}
+          <Route path="/userRole/" exact component={ListUserRoles} />
+          <Route path="/userRole/create" exact component={CreateUserRole} />
+          <Route path="/userRole/confirm-delete/:id" exact component={ConfirmDeleteUserRole} />
         </div>
       </Router>
     );

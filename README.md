@@ -161,6 +161,7 @@ You're good to go!
 * Modified server.js to use a .env file, following the recommendations of two team members who had completed a different tutorial.
 * Implemented the routes/endpoints for the back end.
 * Modified App.js by taking out the nav bar and making it a component as suggested by others on the team.
+* Added front and back end for Roles and UserRoles. Neither have update or details views since they are very simple models. The front end for UserRoles should be updated with dropdowns for the users (by email, not ID) and the roles (by name, not ID).
 
 #### Teamwork
 * Attended all meetings.
