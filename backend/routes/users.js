@@ -36,6 +36,23 @@ router.route( '/:id' ).get( function( req, res )
     } );
 } );
 
+// Endpoint to find by email.
+router.route( '/email/:email' ).get( function( req, res ) 
+{
+    let userEmail = req.params.email;
+    User.findOne( { user_email: userEmail }, function( err, user )
+    {
+        if( err ) {
+            const message = "An error occurred trying to find user with email " + userEmail;
+            helper.res404( res, message, err );
+        } else if( !user ) {
+            helper.log( `User with email ${user_email} not found.` )
+        } else {
+            res.json( user );
+        }
+    } );
+} );
+
 // Endpoint to update by ID.
 router.route( '/update/:id' ).post( function( req, res )
 {
@@ -93,7 +110,7 @@ router.route( '/delete/:id' ).post( function( req, res )
 
         } else {
             const message = `User ${id} deleted successfully.`;
-            helper.res200( res, messager );
+            helper.res200( res, message );
         }
     } );
 } );
