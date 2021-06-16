@@ -184,37 +184,21 @@ export default class EditUser extends Component
                 <h3>Update User Information</h3>
                 <form onSubmit={ this.onSubmit }>
 
-                <div className="form-group">
+                    <div className="form-group">
                         <label>Email: </label>
-                        <input type="email"
+                        <input type="text"
                             className="form-control"
                             value={ this.state.user_email }
                             onChange={ this.onChangeUserEmail }
                         />
                     </div>
-                    <div style={ { fontSize: 12, color: "red" } }>
-                        { this.state.emailError }
-                    </div>
                     <div className="form-group">
                         <label>Password: </label>
                         <input
-                            type="password"
+                            type="text"
                             className="form-control"
                             value={ this.state.user_password }
                             onChange={ this.onChangeUserPassword }
-                        />
-                    </div>
-                    <div style={ { fontSize: 12, color: "red" } }>
-                        { this.state.passwordError }
-                    </div>
-                    <div className="form-group">
-                        <label>Repeat Password: </label>
-                        <input
-                            type="password"
-                            value={ this.state.check_password }
-
-                            className="form-control"
-                            id="password"
                         />
                     </div>
                     <div className="form-group">
@@ -226,9 +210,7 @@ export default class EditUser extends Component
                             onChange={ this.onChangeUserPostalCode }
                         />
                     </div>
-                    <div style={ { fontSize: 12, color: "red" } }>
-                        { this.state.postalCodeError }
-                    </div>
+
                     <div className="form-group">
                         <label>Status</label>
                         <br/>
