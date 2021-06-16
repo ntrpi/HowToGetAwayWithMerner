@@ -89,17 +89,15 @@ router.route( '/update/:id' ).post( function( req, res )
 router.route( '/add' ).post( function( req, res )
 {
     let listing = new Listing( req.body );
-    const email = listing.listing_email;
-    User.findOne( { user_email: email }, function( err, user )
+    const userEmail = listing.user_email;
+    User.findOne( { user_email: userEmail }, function( err, user )
     {
         if( err ) {
             const message = "An error occurred trying to find user with email " + userEmail;
             helper.res404( res, message, err );
         } else if( !user ) {
-            helper.log( `User with email ${user_email} not found.` )
+            helper.log( `User with email ${userEmail} not found.` )
         } else {
-            const userId = user._id;
-
             listing.save()
             .then( listing =>
             {

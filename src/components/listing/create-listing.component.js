@@ -117,7 +117,7 @@ export default class CreateListing extends Component
                         />
                     </div>
                     <div className="form-group">
-                        <label>User ID: </label>
+                        <label>User Email: </label>
                             <input
                                 type="text"
                                 className="form-control"
