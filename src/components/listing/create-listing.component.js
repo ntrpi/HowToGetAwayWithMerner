@@ -54,13 +54,127 @@ export default class CreateListing extends Component
             category_id: e.target.value
         } );
     }
+    isValidTitle( title ) 
+    {
+      
+        //Checks against NULL
+        if( ( title === null ) || title === "" ) {
+            return "Title required";
+        }
+        //Checks against regex
+        if( ( title.length < 3 ) || ( title === "" ) ) {
+            return "title must be at least 3 characters long";
+        }
+        return null;
+    }
+    isValidDescription( description ) 
+    {
+      
+        //Checks against NULL
+        if( ( description === null ) || description === "" ) {
+            return "Description required";
+        }
+        //Checks against regex
+        if( ( description.length < 7 ) || ( description === "" ) ) {
+            return "Description must be atleast 7 characters long";
+        }
+        return null;
+    }
+    isValidPrice( price ) 
+    {
+      
+        //Checks against NULL
+        if( ( price === null ) || price === "" ) {
+            return "Price required";
+        }
+        //Checks against regex
+        if( !/^[0-9]*$/.test( price ) ) {
+            return "Description must be atleast a number";
+        }
+        return null;
+    }
+    isValidUserEmail( email ) 
+    {
+      
+        //Checks against NULL
+        if( ( email === null ) || email === "" ) {
+            return "Email required";
+        }
+        //Checks against regex
+        if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
+            return "Invalid Email";
+        }
+        return null;
+    }
+    isValidCategory( category ) 
+    {
+      
+        //Checks against NULL
+        if( ( category === null ) || category === "" ) {
+            return "category required";
+        }
+       
+        return null;
+    }
+    // isValidEmail( email ) 
+    // {
+      
+    //     //Checks against NULL
+    //     if( ( email === null ) || email === "" ) {
+    //         return "Email required";
+    //     }
+    //     //Checks against regex
+    //     if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
+    //         return "Invalid Email";
+    //     }
+    //     return null;
+    // }
    
-
+    //Validation 
     //SUBMIT FORM
     onSubmit( e )
     {
         e.preventDefault();
+        this.setState( {
+            titleError: "",
+            descriptionError:"",
+            priceError: "",
+            userEmailError:"",
+            categoryError:""
 
+            
+        } );
+        let titleResult = this.isValidTitle(this.state.title);
+        if( titleResult !== null ) {
+            this.setState( { titleError: titleResult} )
+            return;
+        }
+        //Description
+        let descriptionResult = this.isValidDescription(this.state.description);
+        if( descriptionResult !== null ) {
+            this.setState( { descriptionError: descriptionResult} )
+            return;
+        }
+        //Price
+        let priceResult = this.isValidPrice(this.state.price);
+        if( priceResult !== null ) {
+            this.setState( { priceError: priceResult} )
+            return;
+        }
+        //Email
+        let userEmailResult = this.isValidUserEmail(this.state.user_email);
+
+        if( userEmailResult !== null ) {
+            this.setState( { userEmailError: userEmailResult} )
+            return;
+        }
+        //Category
+        let categoryResult = this.isValidCategory(this.state.category_id);
+
+        if( categoryResult !== null ) {
+            this.setState( { categoryError: categoryResult} )
+            return;
+        }
         // Create an object to send in the post.
         const newListing = {
             title: this.state.title,
@@ -96,7 +210,9 @@ export default class CreateListing extends Component
                             onChange={ this.onChangeTitle }
                         />
                     </div>
-             
+                    <div style={ { fontSize: 12, color: "red" } }>
+                        { this.state.titleError }
+                    </div>
                     <div className="form-group">
                         <label>Description: </label>
                         <input
@@ -106,7 +222,9 @@ export default class CreateListing extends Component
                             onChange={ this.onChangeDescription }
                         />
                     </div>
-   
+                    <div style={ { fontSize: 12, color: "red" } }>
+                        { this.state.descriptionError }
+                    </div>
                     <div className="form-group">
                         <label>Price: </label>
                             <input
@@ -116,6 +234,9 @@ export default class CreateListing extends Component
                                 onChange={ this.onChangePrice}
                         />
                     </div>
+                    <div style={ { fontSize: 12, color: "red" } }>
+                        { this.state.priceError }
+                    </div>
                     <div className="form-group">
                         <label>User Email: </label>
                             <input
@@ -124,6 +245,9 @@ export default class CreateListing extends Component
                                 value={ this.state.user_email }
                                 onChange={ this.onChangeUserEmail}
                         />
+                    </div>
+                    <div style={ { fontSize: 12, color: "red" } }>
+                        { this.state.userEmailError }
                     </div>
                     
                     <div className="form-group">
@@ -135,6 +259,9 @@ export default class CreateListing extends Component
                             onChange={ this.onChangeCategory }
                         />
                         
+                    </div>
+                    <div style={ { fontSize: 12, color: "red" } }>
+                        { this.state.categoryError }
                     </div>
                    
 
