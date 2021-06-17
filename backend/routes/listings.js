@@ -110,7 +110,7 @@ router.route( '/delete/:id' ).post( function( req, res )
 
         } else {
             const message = `Listing ${id} deleted successfully.`;
-            helper.res200( res, messager );
+            helper.res200( res, message );
         }
     } );
 } );
