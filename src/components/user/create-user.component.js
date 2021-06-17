@@ -55,10 +55,9 @@ export default class CreateUser extends Component
     //Function for validating Email
     isValidEmail( email ) 
     {
-        let emailError = "";
-        let reset = "";
+      
         //Checks against NULL
-        if( ( email == null ) || email == "" ) {
+        if( ( email === null ) || email === "" ) {
             return "Email required";
         }
         //Checks against regex
@@ -72,7 +71,6 @@ export default class CreateUser extends Component
     isValidPassword( password ) 
     {
         let comparePassword = document.getElementById( "password" ).value;
-        let passwordError = "";
         //Checks for bull entry
         if( ( password === null ) || ( password === "" ) ) {
             return "Password required.";
@@ -91,9 +89,8 @@ export default class CreateUser extends Component
 
     isValidPostalCode( postalCode ) 
     {
-        let postalCodeError = "";
         //Checks against null
-        if( ( postalCode == null ) || ( postalCode == "" ) ) {
+        if( ( postalCode === null ) || ( postalCode === "" ) ) {
             return "postalCode Required ";
         }
         //Checks against RegEx NOTE:CANADIAN POSTALCODE ONLY

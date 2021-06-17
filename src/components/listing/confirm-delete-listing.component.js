@@ -1,9 +1,17 @@
+// This is the class we are going to extend.
 import React, { Component } from 'react';
+
+// I guess this is another react component that we are going to use.
+import { Link } from 'react-router-dom';
+
+// axios handles RESTful requests.
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+// Make this available to other stuff.
 export default class ConfirmDeleteListing extends Component
 {
+
     constructor( props )
     {
         super( props );
