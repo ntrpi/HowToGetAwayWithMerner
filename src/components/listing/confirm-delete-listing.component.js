@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 // axios handles RESTful requests.
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+
 
 // Make this available to other stuff.
 export default class ConfirmDeleteListing extends Component
