@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';//allow to link diff routes
 
 import "../App.css";
 
-//Navbar is the name of the comonent
+//Navbar is the name of the component
 export default class Navbar extends Component {//components always have to render something
 
   render() {
