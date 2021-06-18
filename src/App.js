@@ -21,6 +21,11 @@ import CreateRole from "./components/role/create-role.component";
 import ListRoles from "./components/role/list-role.component";
 import ConfirmDeleteRole from "./components/role/confirm-delete-role.component";
 
+// Image components.
+import CreateImage from "./components/image/create-image.component";
+import ListImages from "./components/image/list-image.component";
+import ConfirmDeleteImage from "./components/image/confirm-delete-image.component";
+
 // Role components.
 import CreateUserRole from "./components/userRole/create-userRole.component";
 import ListUserRoles from "./components/userRole/list-userRole.component";
@@ -74,6 +79,11 @@ class App extends Component
           <Route path="/role/" exact component={ListRoles} />
           <Route path="/role/create" exact component={CreateRole} />
           <Route path="/role/confirm-delete/:id" exact component={ConfirmDeleteRole} />
+
+          {/* Images Components           */}
+          <Route path="/image/" exact component={ListImages} />
+          <Route path="/image/create" exact component={CreateImage} />
+          <Route path="/image/confirm-delete/:id" exact component={ConfirmDeleteImage} />
 
           {/* UserRoles Components           */}
           <Route path="/userRole/" exact component={ListUserRoles} />

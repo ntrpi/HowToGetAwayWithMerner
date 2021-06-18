@@ -28,3 +28,4 @@ yarn-debug.log*
 yarn-error.log*
 backend/package-lock.json
 package-lock.json
+backend/images
