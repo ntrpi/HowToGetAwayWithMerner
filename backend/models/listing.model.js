@@ -29,7 +29,11 @@ let Listing = new Schema( {
     is_flagged: {
         type: Boolean,
         default: false
-    }
+    },
+    
+    photo: {
+        type: String
+    },
 
 } );
 

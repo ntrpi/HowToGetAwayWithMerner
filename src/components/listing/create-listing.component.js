@@ -12,6 +12,9 @@ export default class CreateListing extends Component
         this.onChangePrice = this.onChangePrice.bind( this );
         this.onChangeCategory = this.onChangeCategory.bind( this );
         this.onChangeUserEmail = this.onChangeUserEmail.bind( this );
+        //Photo
+        this.onChangePhoto = this.onChangePhoto.bind( this );
+
         this.onSubmit = this.onSubmit.bind( this );
 //STATE IS HOW YOU CREATE VAR IN REACT
         this.state = {
@@ -20,10 +23,20 @@ export default class CreateListing extends Component
             price: '',
             user_email: '',
             category_id: '',
-            is_flagged: 'false'   
+            is_flagged: 'false',
+            // Blank state for photo
+            photo:'' ,  
         };
     }
 
+    //Change for photo
+    onChangePhoto (e){
+        this.setState({
+            photo: e.target.value,//May require some tweeking
+            photo: e.target.files[0]//May require some tweeking
+
+        })
+    }
     onChangeTitle( e )
     {
         this.setState( {
@@ -116,19 +129,7 @@ export default class CreateListing extends Component
        
         return null;
     }
-    // isValidEmail( email ) 
-    // {
-      
-    //     //Checks against NULL
-    //     if( ( email === null ) || email === "" ) {
-    //         return "Email required";
-    //     }
-    //     //Checks against regex
-    //     if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
-    //         return "Invalid Email";
-    //     }
-    //     return null;
-    // }
+   
    
     //Validation 
     //SUBMIT FORM
@@ -140,7 +141,8 @@ export default class CreateListing extends Component
             descriptionError:"",
             priceError: "",
             userEmailError:"",
-            categoryError:""
+            categoryError:"",
+            photo:""
 
             
         } );
@@ -182,7 +184,10 @@ export default class CreateListing extends Component
             price: this.state.price,
             user_email: this.state.user_email,
             category_id: this.state.category_id,
-            is_flagged: this.state.is_flagged
+            is_flagged: this.state.is_flagged,
+            photo: this.state.photo,
+            //
+
         };
 
         // Do the post.
@@ -199,7 +204,7 @@ export default class CreateListing extends Component
             <div style={ { marginTop: 10 } }>
                 <h3>Create New Listing</h3>
 
-                <form onSubmit={ this.onSubmit }>
+                <form onSubmit={ this.onSubmit } encType='multipart/form-data'>
 
                     <div className="form-group">
                         <label>Title: </label>
@@ -263,7 +268,18 @@ export default class CreateListing extends Component
                     <div style={ { fontSize: 12, color: "red" } }>
                         { this.state.categoryError }
                     </div>
-                   
+                    <div className="form-group">
+                        <label>Listing Photo </label>
+                        <input
+                            type="file"
+                            accept = ".png, .jpg, .jpeg"
+                            name="photo"
+                            className="form-control"
+                            // value={ this.state.photo } I dont think value is needed, the value should be the uploaded photo
+                            onChange={ this.onChangePhoto }
+                        />
+                        
+                    </div>
 
                     <div className="form-group m-2">
                         <input type="submit" value="Create Listing" className="btn btn-primary" />
