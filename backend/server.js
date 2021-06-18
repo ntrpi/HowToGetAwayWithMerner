@@ -58,6 +58,10 @@ app.use( '/userRoles', userRoleRouter );
 const listingRouter = require( './routes/listings' );
 app.use( '/listings', listingRouter );
 
+const imageRouter = require( './routes/images' );
+app.use( '/images', imageRouter );
+
+
 app.listen( PORT, function()
 {
     console.log( "Server is running on Port: " + PORT );
