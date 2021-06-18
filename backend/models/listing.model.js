@@ -17,7 +17,7 @@ let Listing = new Schema( {
         default: 0
     },
 
-    user_id: {
+    user_email: {
         type: String,
         required: true
     },
