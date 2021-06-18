@@ -13,7 +13,7 @@ export default class CreateListing extends Component
         this.onChangeCategory = this.onChangeCategory.bind( this );
         this.onChangeUserEmail = this.onChangeUserEmail.bind( this );
         //Photo
-        this.onChangePhoto = this.onChangePhoto.bind( this );
+        // this.onChangePhoto = this.onChangePhoto.bind( this );
 
         this.onSubmit = this.onSubmit.bind( this );
 //STATE IS HOW YOU CREATE VAR IN REACT
@@ -25,18 +25,17 @@ export default class CreateListing extends Component
             category_id: '',
             is_flagged: 'false',
             // Blank state for photo
-            photo:'' ,  
+            // photo:'' ,  
         };
     }
 
-    //Change for photo
-    onChangePhoto (e){
-        this.setState({
-            photo: e.target.value,//May require some tweeking
-            photo: e.target.files[0]//May require some tweeking
-
-        })
-    }
+    // //Change for photo
+    // onChangePhoto (e){
+    //     this.setState({
+    //         // photo: e.target.value,//May require some tweeking
+    //         photo: e.target.files[0]//May require some tweeking
+    //     })
+    // }
     onChangeTitle( e )
     {
         this.setState( {
@@ -186,7 +185,7 @@ export default class CreateListing extends Component
             category_id: this.state.category_id,
             is_flagged: this.state.is_flagged,
             photo: this.state.photo,
-            //
+            
 
         };
 
@@ -268,7 +267,7 @@ export default class CreateListing extends Component
                     <div style={ { fontSize: 12, color: "red" } }>
                         { this.state.categoryError }
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label>Listing Photo </label>
                         <input
                             type="file"
@@ -279,7 +278,7 @@ export default class CreateListing extends Component
                             onChange={ this.onChangePhoto }
                         />
                         
-                    </div>
+                    </div> */}
 
                     <div className="form-group m-2">
                         <input type="submit" value="Create Listing" className="btn btn-primary" />

@@ -1,30 +1,31 @@
 const helper = require( './routeHelper' );
 var router = require( 'express' ).Router();
-//Added to allow image uploads
-const multer = require('multer');
-const {v4: uuidv4} = require('uuid');
-let path = require('path');
+// //Added to allow image uploads
+// const multer = require('multer');
+// const {v4: uuidv4} = require('uuid');
+// let path = require('path');
 
-//The following is to create custom id's for image names
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './images');//double check this is the path
-    },
-    filename: function(req, file, cb) {   
-        cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-//The following is an image filter
-const fileFilter = (req, file, cb) => {
-    const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    if(allowedFileTypes.includes(file.mimetype)) {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-}
+// //The following is to create custom id's for image names
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, './images');//double check this is the path
+//     },
+//     filename: function(req, file, cb) {   
+//         cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+//     }
+// });
 
-let upload = multer({ storage, fileFilter });
+// //The following is an image filter
+// const fileFilter = (req, file, cb) => {
+//     const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+//     if(allowedFileTypes.includes(file.mimetype)) {
+//         cb(null, true);
+//     } else {
+//         cb(null, false);
+//     }
+// }
+
+// let upload = multer({ storage, fileFilter });
 
 // Access the mongoose schemas.
 let Listing = require( '../models/listing.model' );
@@ -111,7 +112,9 @@ router.route( '/update/:id' ).post( function( req, res )
 } );
 
 // Endpoint to create a new record.
-router.route( '/add' ).post(upload.single('photo'), function( req, res )// Added upload.single('photo'), for photo upload
+// router.route( '/add' ).post(upload.single('photo'), function( req, res )// Added upload.single('photo'), for photo upload
+
+router.route( '/add' ).post( function( req, res )// Added upload.single('photo'), for photo upload
 {
     let listing = new Listing( req.body );
     const userEmail = listing.user_email;
