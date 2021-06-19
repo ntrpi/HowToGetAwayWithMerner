@@ -1,11 +1,19 @@
-# MERN Todo App Tutorial
+# HTTP5303 Web Project
+
+The purpose of this project was for us to learn a new web technology stack and create an app. 
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
-    <li><a href="#about">About</a></li>
-    <li><a href="#getting-started">Getting Started</a>
+    <li><a href="#outline">Outline</a>
+      <ul>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#technologies">Technologies</a></li>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#technical-considerations">Technical Considerations</a></li>
+      </ul>
+    </li>
+    <li><a href="#running-the-app">Running the App</a>
         <ul>
           <li><a href="#prerequisites">Prerequisites</li>
           <li><a href="#steps">Steps</li>
@@ -61,7 +69,7 @@
       </ul>
     </li>
     <li>
-      <a href="#part-1-notes">Part 1 Notes</a>
+      <a href="#tutorial-notes-part-1">Tutorial Notes Part 1</a>
       <ul>
         <li><a href="#create-and-start-the-app">Create and Start the App</a></li>
         <li><a href="#add-bootstrap">Add Bootstrap</a></li>
@@ -71,7 +79,7 @@
       </ul>
     </li>
     <li>
-      <a href="#part-2-notes">Part 2 Notes</a>
+      <a href="#tutorial-notes-part-2">Tutorial Notes Part 2</a>
       <ul>
         <li><a href="#initialize-the-back-end">Initialize the Back End</a></li>
       </ul>
@@ -80,15 +88,38 @@
   </ol>
 </details>
 
-## About
+## Outline
 
+### Team 
+
+#### Name:
+
+How to Get Away With Merner
+
+#### Team Members
+
+* Asia Gault
+* Danyal Effendi
+* Jemi Choi
+* Journey Gault
+* Sandra Kupfer
+
+### Technologies
+We chose the MERN stack, as we believe that it is currently in great demand in the web development industry. 
+
+### Description
 This project is a marketplace app, something like Facebook Marketplace but without the Facebook. We had hoped to add functionality to facilitate bartering, but that proved to be beyond the scope that we could implement in the time we had.
+
+This app intended for anyone to use for browsing, but for interaction the user must be 18 years or older.
+
+### Technical Considerations
+We will be using MERN as the tech stack, and VS Code as the development environment, and Github for version control. Our database will be hosted on Atlas, and we will be hosting on Heroku.
 
 This project was initially modeled on the app created doing this MERN: https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-1/
 
 It has since been significantly modified.
 
-## Getting Started
+## Running the App
 
 ### Prerequisites
 You will need to have an account with Atlas to run MongoDB. In your cluster, make sure you have a database called "test".
@@ -188,7 +219,7 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 * Made sure everyone could run the app after I initialized it in the repo.
 * Responded quickly to requests for help.
 
-## Part 1 Notes
+## Tutorial Notes Part 1
 
 These are just notes I made while following the tutorial.
 
@@ -233,7 +264,7 @@ After adding the import .component statements, it would seem that each Route ele
 
 See comments in App.js and the .component files.
 
-## Part 2 Notes
+## Tutorial Notes Part 2
 
 ### Initialize the Back End
 
