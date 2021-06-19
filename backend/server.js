@@ -3,11 +3,22 @@
 // Assuming this creates an object called process that has
 // whatever vars are in your .env file as properties.
 require( 'dotenv' ).config();
+const nodemailer = require('nodemailer');// sends our emails
 const url = process.env.ATLAS_URL;
 
 //-----------------------------------------------------------------
 // https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-2/
 // Tutorial code
+
+// for Nodemailer to send mails, it needs to have a SMTP 
+const transporter = nodemailer.createTransport({
+    host: "https://git.heroku.com/serene-island-58904.git", //replace with your email provider
+    port: 587,
+    auth: {
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD
+    }
+  });
 
 // Create an Express server to run on port 4000.
 const express = require( 'express' );
