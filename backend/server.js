@@ -61,6 +61,9 @@ app.use( '/listings', listingRouter );
 const imageRouter = require( './routes/images' );
 app.use( '/images', imageRouter );
 
+const listingImageRouter = require( './routes/listingImages' );
+app.use( '/listingImages', listingImageRouter );
+
 
 app.listen( PORT, function()
 {
