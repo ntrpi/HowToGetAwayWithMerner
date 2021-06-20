@@ -3,6 +3,7 @@ var router = require( 'express' ).Router();
 
 // Access the mongoose schemas.
 let ListingImage = require( '../models/listing_image.model' );
+let Image = require( '../models/image.model' );
 
 // ListingImages index page.
 router.route( '/' ).get( function( req, res )
@@ -49,6 +50,68 @@ router.route( '/listing/:id' ).get( function( req, res )
             helper.log( `ListingImages for listing with id ${listingId} not found.` )
         } else {
             res.json( listingImages );
+        }
+    } );
+} );
+
+// Endpoint to find images for listing by listing ID.
+router.route( '/images/:id').get( function( req, res ) 
+{
+    // Find all the listing images for the given listing ID.
+    let listingId = req.params.id;
+    ListingImage.find( { listing_id: listingId }, function( err, listingImages ) 
+    {
+        // An error occurred trying to access the listingImages table.
+        if( err ) {
+            const message = "An error occurred trying to find listingImages for listing with id " + listingId;
+            helper.res404( res, message, err );
+
+        // There are no listingImages for this listing.
+        } else if( !listingImages ) {
+            helper.log( `ListingImages for listing with id ${listingId} not found.` )
+
+        // Listing images found successfully.
+        } else {
+            
+            // Get the number of listing images. This will help us determine
+            // when all of the images have been retrieved.
+            const numImages = listingImages.length;
+
+            // Create an array to put the image names in.
+            const imageNames = [];
+
+            // Iterate over the listing images.
+            listingImages.map( function( listingImage, i ) 
+            {
+                // For each listing image, find the image in the database.
+                Image.findById( listingImage.image_id, function( err, image )
+                {
+                    // An error occurred trying to access the database.
+                    if( err ) {
+                        const message = "An error occurred trying to find image with id " + id;
+                        helper.res404( res, message, err );
+                    
+                    // Unable to get the image.
+                    } else if( !image ) {
+                        helper.log( `Image with id ${id} not found.` )
+
+                    // The image was successfully retrieved from the database.
+                    } else {
+                        // Add the image name to the array.
+                        imageNames.push( image.image_name );
+
+                        // Because all these calls to the database are happening 
+                        // asynchronously, the only way to know when they have all 
+                        // finished is when we have the same number of image names
+                        // as images.
+                        if( imageNames.length === numImages ) {
+
+                            // All database calls are complete, send the response.
+                            res.json( imageNames );
+                        }
+                    }
+                } );
+            } );
         }
     } );
 } );

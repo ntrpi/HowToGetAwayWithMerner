@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+const ListingImage = props => (
+    <div style={{ display: 'inline' }} >
+        <img src={ process.env.PUBLIC_URL +  "/img/" + props.imgName } alt={ props.alt } height="150px" style={{margin: 30}} />
+    </div>
+);
+
 //Maing the listings globally available
 export default class ListingDetails extends Component
 {
@@ -12,22 +18,49 @@ export default class ListingDetails extends Component
 
         this.state ={
             listingId: props.match.params.id,
-            listing:{}
+            listing:{},
+            listingImages: []
         };
     }
+
+    // This function maps each item in the array to the Listing component declared above.
+    listingImagesList()
+    {
+        const altText = this.state.listing ? this.state.listing.title : "Listing.";
+        return this.state.listingImages.map( function( imageName, i )
+        {
+            console.log( imageName );
+            return <ListingImage 
+                alt={ altText } 
+                imgName={ imageName } 
+                key={ i } />;
+        } );
+    }
+
     componentDidMount()
     {
         axios.get( 'http://localhost:4000/listings/' + this.state.listingId )
-        .then(response =>{
+        .then( response => {
             //sets listing from this.setstate above
-            this.setState({listing:response.data})
-        })
+            this.setState( { listing:response.data } );
+
+            axios.get( 'http://localhost:4000/listingImages/images/' + this.state.listingId )
+            .then( response => {
+                this.setState( { listingImages: response.data } );
+            } )
+            //If it fails send an error
+            .catch(function(error){
+                console.log(error);
+            });
+ 
+        } )
         //If it fails send an error
         .catch(function(error){
             console.log(error);
         });
 
     }
+
     render()
     {
         return (
@@ -42,6 +75,9 @@ export default class ListingDetails extends Component
                     
                         <li className="list-group-item">Category: {this.state.listing.category_id}</li>
                     
+                </div>
+                <div>
+                    { this.listingImagesList() }
                 </div>
                 <div className="d-flex flex-row">
                     <div className="m-2">

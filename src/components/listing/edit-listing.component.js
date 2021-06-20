@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class EditListing extends Component
@@ -26,7 +27,7 @@ export default class EditListing extends Component
             is_flagged: false   
         };
     }
-//ADD COMPONENT DID MOUNT HERE
+
 componentDidMount(){
     //CHANGE REQUEST
     axios.get( 'http://localhost:4000/listings/' + this.props.match.params.id )
@@ -146,16 +147,6 @@ componentDidMount(){
                         />
                     </div>
                     <div className="form-group">
-                        <label>User ID: </label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={ this.state.user_id }
-                                onChange={ this.onChangeUserID}
-                        />
-                    </div>
-                    
-                    <div className="form-group">
                         <label>Category ID: </label>
                         <input
                             type="text"
@@ -179,7 +170,8 @@ componentDidMount(){
                     <div className="form-group m-2">
                         <input type="submit" value="Update Listing" className="btn btn-primary" />
                     </div>
-                    </form>
+                </form>
+                <Link to={ "/listingImage/create/" + this.props.match.params.id }>Add Image</Link><br></br>
             </div>
         );
     }

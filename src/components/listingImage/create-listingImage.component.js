@@ -37,7 +37,7 @@ const CreateListingImage = ( props ) =>
                 // Do the second post.
                 axios.post( 'http://localhost:4000/listingImages/add/', listingImage )
                     .then(
-                        window.location.href = "/listing/" + res.data.image._id
+                        window.location.href = "/listing/details/" + listingId
                     );
             } )
             .catch(err => {
@@ -71,7 +71,7 @@ const CreateListingImage = ( props ) =>
             <form onSubmit={ onSubmit } encType='multipart/form-data'>
 
                 <div className="form-group">
-                    <label hidden="true">Listing Image: </label>
+                    <label hidden={ true }>Listing Image: </label>
                     <input type="file"
                         accept=".png, .jpg, .jpeg"
                         className="form-control"

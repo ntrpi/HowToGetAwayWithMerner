@@ -65,10 +65,10 @@ class App extends Component
         <div className="container">
           <Navbar />
           <br/>
-          <img src="img/fb53b3ad-90e0-4ae6-a756-2bba6bfb7a5d-1624045344681.png" alt="test" />
 
           {/* Listings Components */}
           <Route path="/" exact component={ListListings} />
+          <Route path="/listing" exact component={ListListings} />
           <Route path="/listing/create" exact component={CreateListing} />
           <Route path="/listing/confirm-delete/:id" exact component={ConfirmDeleteListing} />
           <Route path="/listing/details/:id" exact component={ListingDetails} />
