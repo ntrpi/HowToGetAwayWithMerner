@@ -64,6 +64,7 @@ The purpose of this project was for us to learn a new web technology stack and c
             <li><a href="#project">Project</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#teamwork">Teamwork</a></li>
+            <li><a href="#deployment">Deployment</a></li>
           </ul>
         </li>
       </ul>
@@ -236,6 +237,20 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 * Responded quickly to requests for help.
 * Worked closely with Journey to add images functionality to the listings front end, adding the ability to add images to a listing and view the images with the listing details.
 
+#### Deployment
+
+I was surprised to discover that while deploying a simple React app to Heroku is trivial, deploying a MERN stack app is a little more complicated. The way this project is currently structured, I would have to do a lot more investigating into how Node.js manages builds, and probably more about how Heroku manages deployment.
+
+The fundamental problem is that a MERN stack application is technically two applications running on two separate processes. You need a way to tell Heroku to start both. 
+
+I did some research and found that this is done with the "scripts" object in the package.json file. However, all the examples I found had projects structured so that the back end was in the root folder, and the React front end was in a subfolder. This made it easy to tell Heroku to start the back end process and then redirect it to start the front end after.
+
+I imagine that with a little more knowledge on how the "scripts" object works I could have figured out how to start both processes, but instead I took the easy route and restructured the project: https://github.com/ntrpi/htgawm
+
+I was able to successfully deploy that version of the project and have both front and back ends working.
+
+Upon deployment, I discovered that the image uploading feature didn't work. It seems that Heroku does not allow files to be written to the server, so to make that feature work I would have to integrate with AWS or some other file-hosting service, or perhaps integrate the Heroku extension, Cloudinary.
+
 ## Tutorial Notes Part 1
 
 These are just notes I made while following the tutorial.
@@ -290,10 +305,4 @@ See comments in App.js and the .component files.
 
 Also, the tutorial forgot to mention that you should probably add /backend/node_modules to .gitignore.
 
-
-## Deployment
-
-Coming soon!
-
-https://devcenter.heroku.com/articles/deploying-nodejs
 
