@@ -12,7 +12,7 @@ const url = process.env.ATLAS_URL;
 // Create an Express server to run on port 4000.
 const express = require( 'express' );
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // Attach the middleware
 const bodyParser = require( 'body-parser' );
@@ -39,12 +39,7 @@ connection.once( 'open', function()
     console.log( "MongoDB database connection established successfully" );
 } );
 
-
 // https://riptutorial.com/express/example/16315/multiple-routes
-// Routing
-// app.use( '/', './routes/index.js' );
-// app.use( '/listings', './routes/listings.js' );
-// app.use( '/messages', './routes/messages.js' );
 
 const userRouter = require( './routes/users' );
 app.use( '/users', userRouter );
@@ -63,6 +58,18 @@ app.use( '/images', imageRouter );
 
 const listingImageRouter = require( './routes/listingImages' );
 app.use( '/listingImages', listingImageRouter );
+
+// https://dev.to/hawacodes/deploying-a-mern-app-with-heroku-3km7
+// Accessing the path module
+const path = require("path");
+
+// Step 1:
+app.use( express.static( path.resolve( __dirname, "./build") ) );
+
+// Step 2:
+app.get( "*", function (request, response ) {
+    response.sendFile( path.resolve( __dirname, "./build", "index.html" ) );
+} );
 
 
 app.listen( PORT, function()
