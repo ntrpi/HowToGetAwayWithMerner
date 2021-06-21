@@ -26,10 +26,15 @@ import CreateImage from "./components/image/create-image.component";
 import ListImages from "./components/image/list-image.component";
 import ConfirmDeleteImage from "./components/image/confirm-delete-image.component";
 
-// Role components.
+// UserRole components.
 import CreateUserRole from "./components/userRole/create-userRole.component";
 import ListUserRoles from "./components/userRole/list-userRole.component";
 import ConfirmDeleteUserRole from "./components/userRole/confirm-delete-userRole.component";
+
+// ListingImage components.
+import CreateListingImage from "./components/listingImage/create-listingImage.component";
+import ListingImagesList from "./components/listingImage/list-listingImage.component";
+import ConfirmDeleteListingImage from "./components/listingImage/confirm-delete-listingImage.component";
 
 // Listing components.
 import ListListings from "./components/listing/list-listing.component";
@@ -63,6 +68,7 @@ class App extends Component
 
           {/* Listings Components */}
           <Route path="/" exact component={ListListings} />
+          <Route path="/listing" exact component={ListListings} />
           <Route path="/listing/create" exact component={CreateListing} />
           <Route path="/listing/confirm-delete/:id" exact component={ConfirmDeleteListing} />
           <Route path="/listing/details/:id" exact component={ListingDetails} />
@@ -89,6 +95,14 @@ class App extends Component
           <Route path="/userRole/" exact component={ListUserRoles} />
           <Route path="/userRole/create" exact component={CreateUserRole} />
           <Route path="/userRole/confirm-delete/:id" exact component={ConfirmDeleteUserRole} />
+
+          {/* ListingImage Components           */}
+          <Route path="/listingImage/" exact component={ListingImagesList} />
+
+          {/* :id == listing id */}
+          <Route path="/listingImage/create/:id" exact component={CreateListingImage} />
+
+          <Route path="/listingImage/confirm-delete/:id" exact component={ConfirmDeleteListingImage} />
         </div>
       </Router>
     );

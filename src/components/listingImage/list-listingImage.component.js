@@ -8,46 +8,45 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 // This creates a reusable component that is putting the properties
-// of the todo into a row element.
+// of the listingImage into a row element.
 // I'm not sure I understand the syntax here. If props is a parameter
-// why is it props.todo when it is called with currentTodo below?
+// why is it props.listingImage when it is called with currentListingImage below?
 // Maybe the constructor wraps stuff passed to it with props?
-const Todo = props => (
+const ListingImage = props => (
     <tr>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_description}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_responsible}</td>
-        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_priority}</td>
+        <td>{props.listingImage.listing_id}</td>
+        <td>{props.listingImage.image_id}</td>
         <td>
-            <Link to={ "/edit/" + props.todo._id }>Edit</Link>
+            <Link to={ "/listingImage/confirm-delete/" + props.listingImage._id }>Delete</Link><br></br>
         </td>
     </tr>
 );
 
 // Make this available to other stuff.
-export default class TodosList extends Component
+export default class ListingImagesList extends Component
 {
 
     constructor( props )
     {
         super( props );
 
-        // Initialize the state with an empty array called todos.
+        // Initialize the state with an empty array called listingImages.
         // We have to do this because it's the only way to have
         // member variables in a JS class.
-        this.state = { todos: [] };
+        this.state = { listingImages: [] };
     }
 
-    // Override this method to be called when the TodoList component is "mounted" successfully.
+    // Override this method to be called when the ListingImageList component is "mounted" successfully.
     componentDidMount()
     {
-        // Access the default todos endpoint.
-        axios.get( 'http://localhost:4000/todos/' )
+        // Access the default listingImages endpoint.
+        axios.get( 'http://localhost:4000/listingImages/' )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.
                 // Replace the empty array we initialized the state with
                 // with the response data.
-                this.setState( { todos: response.data } );
+                this.setState( { listingImages: response.data } );
             } )
             .catch( function( error )
             {
@@ -55,12 +54,12 @@ export default class TodosList extends Component
             } );
     }
 
-    // This function maps each item in the array to the Todo component declared above.
-    todoList()
+    // This function maps each item in the array to the ListingImage component declared above.
+    listingImageList()
     {
-        return this.state.todos.map( function( currentTodo, i )
+        return this.state.listingImages.map( function( currentListingImage, i )
         {
-            return <Todo todo={ currentTodo } key={ i } />;
+            return <ListingImage listingImage={ currentListingImage } key={ i } />;
         } );
     }
 
@@ -69,18 +68,17 @@ export default class TodosList extends Component
     {
         return (
             <div>
-                <h3>Todos List</h3>
+                <h3>ListingImages List</h3>
                 <table className="table table-striped" style={ { marginTop: 20 } } >
                     <thead>
                         <tr>
-                            <th>Description</th>
-                            <th>Responsible</th>
-                            <th>Priority</th>
+                            <th>Listing ID</th>
+                            <th>Image ID</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        { this.todoList() }
+                        { this.listingImageList() }
                     </tbody>
                 </table>
             </div>

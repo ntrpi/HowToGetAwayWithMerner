@@ -12,11 +12,9 @@ export default class CreateListing extends Component
         this.onChangePrice = this.onChangePrice.bind( this );
         this.onChangeCategory = this.onChangeCategory.bind( this );
         this.onChangeUserEmail = this.onChangeUserEmail.bind( this );
-        //Photo
-        // this.onChangePhoto = this.onChangePhoto.bind( this );
 
         this.onSubmit = this.onSubmit.bind( this );
-//STATE IS HOW YOU CREATE VAR IN REACT
+
         this.state = {
             title: '',
             description: '',
@@ -24,112 +22,109 @@ export default class CreateListing extends Component
             user_email: '',
             category_id: '',
             is_flagged: 'false',
-            // Blank state for photo
-            // photo:'' ,  
         };
     }
 
-    // //Change for photo
-    // onChangePhoto (e){
-    //     this.setState({
-    //         // photo: e.target.value,//May require some tweeking
-    //         photo: e.target.files[0]//May require some tweeking
-    //     })
-    // }
     onChangeTitle( e )
     {
         this.setState( {
             title: e.target.value
         } );
     }
+
     onChangeDescription( e )
     {
         this.setState( {
             description: e.target.value
         } );
     }
+
     onChangePrice( e )
     {
         this.setState( {
             price: e.target.value
         } );
     }
+
     onChangeUserEmail(e)
     {
         this.setState( {
             user_email: e.target.value
         });
     }
+
     onChangeCategory( e )
     {
         this.setState( {
             category_id: e.target.value
         } );
     }
+
     isValidTitle( title ) 
     {
-      
         //Checks against NULL
         if( ( title === null ) || title === "" ) {
             return "Title required";
         }
+
         //Checks against regex
         if( ( title.length < 3 ) || ( title === "" ) ) {
             return "title must be at least 3 characters long";
         }
         return null;
     }
+
     isValidDescription( description ) 
     {
-      
         //Checks against NULL
         if( ( description === null ) || description === "" ) {
             return "Description required";
         }
+
         //Checks against regex
         if( ( description.length < 7 ) || ( description === "" ) ) {
             return "Description must be atleast 7 characters long";
         }
         return null;
     }
+
     isValidPrice( price ) 
     {
-      
         //Checks against NULL
         if( ( price === null ) || price === "" ) {
             return "Price required";
         }
+
         //Checks against regex
         if( !/^[0-9]*$/.test( price ) ) {
             return "Description must be atleast a number";
         }
         return null;
     }
+
     isValidUserEmail( email ) 
     {
-      
         //Checks against NULL
         if( ( email === null ) || email === "" ) {
             return "Email required";
         }
+
         //Checks against regex
         if( !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test( email ) ) {
             return "Invalid Email";
         }
         return null;
     }
+
     isValidCategory( category ) 
     {
-      
         //Checks against NULL
         if( ( category === null ) || category === "" ) {
             return "category required";
         }
-       
         return null;
     }
-   
-   
+
     //Validation 
     //SUBMIT FORM
     onSubmit( e )
@@ -141,41 +136,42 @@ export default class CreateListing extends Component
             priceError: "",
             userEmailError:"",
             categoryError:"",
-            photo:""
-
-            
         } );
+
         let titleResult = this.isValidTitle(this.state.title);
         if( titleResult !== null ) {
             this.setState( { titleError: titleResult} )
             return;
         }
+
         //Description
         let descriptionResult = this.isValidDescription(this.state.description);
         if( descriptionResult !== null ) {
             this.setState( { descriptionError: descriptionResult} )
             return;
         }
+
         //Price
         let priceResult = this.isValidPrice(this.state.price);
         if( priceResult !== null ) {
             this.setState( { priceError: priceResult} )
             return;
         }
+
         //Email
         let userEmailResult = this.isValidUserEmail(this.state.user_email);
-
         if( userEmailResult !== null ) {
             this.setState( { userEmailError: userEmailResult} )
             return;
         }
+
         //Category
         let categoryResult = this.isValidCategory(this.state.category_id);
-
         if( categoryResult !== null ) {
             this.setState( { categoryError: categoryResult} )
             return;
         }
+
         // Create an object to send in the post.
         const newListing = {
             title: this.state.title,
@@ -184,15 +180,12 @@ export default class CreateListing extends Component
             user_email: this.state.user_email,
             category_id: this.state.category_id,
             is_flagged: this.state.is_flagged,
-            photo: this.state.photo,
-            
-
         };
 
         // Do the post.
         axios.post( 'http://localhost:4000/listings/add', newListing )
             .then(
-                res => this.props.history.push( '/listing/details/' + res.data.listing._id )
+                res => this.props.history.push( '/listingImage/create/' + res.data.listing._id )
             );
         //window.location = '/';
     }
