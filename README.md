@@ -211,6 +211,7 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 * Added the back end for images and a bridging table for listing images. Defined the routes for listing images so that images can be found easily for each listing.
 
 #### Teamwork
+
 * Attended all meetings.
 * Communicated with team members about progress regularly.
 * Followed up regularly with team members to make sure they weren't waiting on my work to get their's done.
