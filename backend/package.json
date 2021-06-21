@@ -8,7 +8,7 @@
     "install-build": "npm install",
     "heroku-postbuild": "npm run install-build && npm run build",
     "server": "nodemon server.js",
-    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run startt\"",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
   },
   "keywords": [],
