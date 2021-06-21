@@ -190,8 +190,22 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 
 ### Journey
 #### Project
+* Organised group and led discussion 
+* Regulairly contacted members for updates
+* Team Lead
+* Created initial planning docks
+
+ 
 #### Features
+* Created  the following listing views: Edit, (Duplicated Delete due to misscomunication )
+
+* Created  the following user views: Edit, Details
+* Created client side validation 
+
 #### Teamwork
+
+* regulairly asked form help when needed
+* Assisted in image uploading feature with Sandra 
 
 ### Sandra
 
