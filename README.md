@@ -161,7 +161,7 @@ A listing represents an item that a user would like to sell or give away.
 
 ### Images
 
-Ideally, images can be uploaded for both listings and users.
+A listing can have multiple images. Images are uploaded for a listing and then displayed with the listing details.
 
 ### Categories
 
@@ -222,6 +222,7 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 * Modified App.js by taking out the nav bar and making it a component as suggested by others on the team.
 * Added front and back end for Roles and UserRoles. Neither have update or details views since they are very simple models. The front end for UserRoles should be updated with dropdowns for the users (by email, not ID) and the roles (by name, not ID).
 * Since we don't currently have user authentication, I changed the listing model to use user_email instead of user_id since it's easier to type, and the emails are unique.
+* Added the back end for images and a bridging table for listing images. Defined the routes for listing images so that images can be found easily for each listing.
 
 #### Teamwork
 * Attended all meetings.
@@ -232,6 +233,7 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 * Helped Jemi set up her DB on Atlas.
 * Made sure everyone could run the app after I initialized it in the repo.
 * Responded quickly to requests for help.
+* Worked closely with Journey to add images functionality to the listings front end, adding the ability to add images to a listing and view the images with the listing details.
 
 ## Tutorial Notes Part 1
 

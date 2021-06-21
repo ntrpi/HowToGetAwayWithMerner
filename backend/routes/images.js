@@ -10,7 +10,7 @@ let Image = require( '../models/image.model' );
 // Set the path for storing the image.
 const storage = multer.diskStorage( 
     {
-        destination: function( req, file, callback ) { callback( null, 'images' ) },
+        destination: function( req, file, callback ) { callback( null, '../public/img' ) },
         filename: function( req, file, callback ) {
             callback( null, uuidv4() + '-' + Date.now() + path.extname( file.originalname ) );
         }

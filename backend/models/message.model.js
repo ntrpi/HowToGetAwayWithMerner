@@ -5,18 +5,17 @@ let Message = new Schema( {
     listing_id: {
         type: String
     },
-    user_id: {
+    name: {
         type: String
     },
-    created: {
-        type: Date
-    },
-    content: {
+    email: {
         type: String
     },
-    is_sent: {
-        type: Boolean,
-        default: false
+    subject: {
+        type: String
+    },
+    message: {
+        type: String
     },
 } );
 
