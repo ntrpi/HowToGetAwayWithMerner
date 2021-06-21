@@ -3,11 +3,30 @@
 // Assuming this creates an object called process that has
 // whatever vars are in your .env file as properties.
 require( 'dotenv' ).config();
+//const nodemailer = require('nodemailer');// sends our emails
 const url = process.env.ATLAS_URL;
 
 //-----------------------------------------------------------------
 // https://codingthesmartway.com/the-mern-stack-tutorial-building-a-react-crud-application-from-start-to-finish-part-2/
 // Tutorial code
+
+// for Nodemailer to send mails, it needs to have a SMTP 
+// const transporter = nodemailer.createTransport({
+//     host: "Google", //https://git.heroku.com/serene-island-58904.git
+//     PORT: 587,
+//     auth: {
+//       user: process.env.EMAIL,
+//       pass: process.env.PASSWORD
+//     }
+//   });
+//   // verify connection configuration
+// transporter.verify(function(error, success) {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log("Server is ready to take our messages");
+//     }
+//   });
 
 // Create an Express server to run on port 4000.
 const express = require( 'express' );
@@ -40,7 +59,6 @@ connection.once( 'open', function()
 } );
 
 // https://riptutorial.com/express/example/16315/multiple-routes
-
 const userRouter = require( './routes/users' );
 app.use( '/users', userRouter );
 
@@ -52,6 +70,9 @@ app.use( '/userRoles', userRoleRouter );
 
 const listingRouter = require( './routes/listings' );
 app.use( '/listings', listingRouter );
+
+// const messageRouter = require( './routes/messages' );
+// app.use( '/messages', messageRouter );
 
 const imageRouter = require( './routes/images' );
 app.use( '/images', imageRouter );
