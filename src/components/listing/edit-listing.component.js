@@ -30,7 +30,7 @@ export default class EditListing extends Component
 
 componentDidMount(){
     //CHANGE REQUEST
-    axios.get( 'http:///listings/' + this.props.match.params.id )
+    axios.get( '/listings/' + this.props.match.params.id )
     .then(response =>
         {
             this.setState({
@@ -101,7 +101,7 @@ componentDidMount(){
         };
 
         // Do the post.
-        axios.post( 'http:///listings/update/'+this.props.match.params.id, newListing )
+        axios.post( '/listings/update/'+this.props.match.params.id, newListing )
             .then(res => console.log(res.data));
 
         //window.location = '/';

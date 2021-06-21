@@ -20,7 +20,7 @@ export default class UserDetails extends Component
 
     componentDidMount()
     {
-        axios.get( 'http:///users/' + this.state.userId )
+        axios.get( '/users/' + this.state.userId )
         .then(response =>{
             //sets the user from this.setstate above
             this.setState({user:response.data})

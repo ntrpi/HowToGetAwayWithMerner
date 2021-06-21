@@ -139,7 +139,7 @@ export default class CreateUser extends Component
         };
 
         // Do the post.
-        axios.post( 'http:///users/add', newUser )
+        axios.post( '/users/add', newUser )
             .then(
                 res => this.props.history.push( '/user/details/' + res.data.user._id )
             );

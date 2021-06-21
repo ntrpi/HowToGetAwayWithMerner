@@ -25,7 +25,7 @@ const CreateListingImage = ( props ) =>
         formData.append( 'image', newListingImage.image );
 
         // Do the post.
-        axios.post( 'http:///images/add/', formData )
+        axios.post( '/images/add/', formData )
             .then( res => {
 
                 // Create an object to send in the post.
@@ -35,7 +35,7 @@ const CreateListingImage = ( props ) =>
                 };
 
                 // Do the second post.
-                axios.post( 'http:///listingImages/add/', listingImage )
+                axios.post( '/listingImages/add/', listingImage )
                     .then(
                         window.location.href = "/listing/details/" + listingId
                     );

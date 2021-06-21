@@ -45,7 +45,7 @@ export default class ListUsers extends Component
     componentDidMount()
     {
         // Access the default users endpoint.
-        axios.get( 'http:///users/' )
+        axios.get( '/users/' )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.

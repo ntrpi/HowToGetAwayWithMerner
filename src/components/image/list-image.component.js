@@ -40,7 +40,7 @@ export default class ImagesList extends Component
     componentDidMount()
     {
         // Access the default images endpoint.
-        axios.get( 'http:///images/' )
+        axios.get( '/images/' )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.

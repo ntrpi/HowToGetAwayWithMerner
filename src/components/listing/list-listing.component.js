@@ -47,7 +47,7 @@ export default class ListListings extends Component
     componentDidMount()
     {
         // Access the default listings endpoint.
-        axios.get( 'http:///listings/' )
+        axios.get( '/listings/' )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.

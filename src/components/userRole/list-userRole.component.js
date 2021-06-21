@@ -40,7 +40,7 @@ export default class UserRolesList extends Component
     componentDidMount()
     {
         // Access the default userRoles endpoint.
-        axios.get( 'http:///userRoles/' )
+        axios.get( '/userRoles/' )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.

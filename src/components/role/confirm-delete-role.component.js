@@ -33,7 +33,7 @@ export default class ConfirmDeleteRole extends Component
     componentDidMount()
     {
         // Access the role confirm delete endpoint.
-        axios.get( 'http:///roles/confirm-delete/' + this.state.roleId )
+        axios.get( '/roles/confirm-delete/' + this.state.roleId )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.
@@ -57,7 +57,7 @@ export default class ConfirmDeleteRole extends Component
             role_name: this.state.role.role_name,
         };
         console.log( "Deleting role " + this.state.roleId );
-        axios.post( 'http:///roles/delete/' + this.state.roleId, role )
+        axios.post( '/roles/delete/' + this.state.roleId, role )
             .then( res => console.log( res.data ) );
 
         // Redirect back to the app's default route.
