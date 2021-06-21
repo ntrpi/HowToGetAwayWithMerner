@@ -18,7 +18,7 @@ const CreateImage = () =>
         formData.append( 'image', newImage.image );
 
         // Do the post.
-        axios.post('http://localhost:4000/images/add/', formData)
+        axios.post('http:///images/add/', formData)
             .then( res => {
                 window.location.href = "/image/" + res.data.image._id;
             } )

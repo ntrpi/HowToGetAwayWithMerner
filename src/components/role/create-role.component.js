@@ -34,7 +34,7 @@ export default class CreateRole extends Component
         };
 
         // Do the post.
-        axios.post( 'http://localhost:4000/roles/add', newRole )
+        axios.post( 'http:///roles/add', newRole )
             .then(
                 res => this.props.history.push( '/role/' )
             );

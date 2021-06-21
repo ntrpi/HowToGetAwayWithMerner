@@ -183,7 +183,7 @@ export default class CreateListing extends Component
         };
 
         // Do the post.
-        axios.post( 'http://localhost:4000/listings/add', newListing )
+        axios.post( 'http:///listings/add', newListing )
             .then(
                 res => this.props.history.push( '/listingImage/create/' + res.data.listing._id )
             );

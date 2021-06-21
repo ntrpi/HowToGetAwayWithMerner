@@ -40,7 +40,7 @@ export default class ListingImagesList extends Component
     componentDidMount()
     {
         // Access the default listingImages endpoint.
-        axios.get( 'http://localhost:4000/listingImages/' )
+        axios.get( 'http:///listingImages/' )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.

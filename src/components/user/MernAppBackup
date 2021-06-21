@@ -38,7 +38,7 @@ export default class EditUser extends Component
     // Note that the method for "completed" is missing.
     
     componentDidMount(){
-        axios.get( 'http://localhost:4000/users/' + this.props.match.params.id )
+        axios.get( 'http:///users/' + this.props.match.params.id )
         .then(response =>
             {
                 this.setState({
@@ -169,7 +169,7 @@ export default class EditUser extends Component
         };
 
         // Do the post.
-        axios.post('http://localhost:4000/users/update/'+this.props.match.params.id, obj)
+        axios.post('http:///users/update/'+this.props.match.params.id, obj)
             .then(res => console.log(res.data));
 
         // Redirect to list page.

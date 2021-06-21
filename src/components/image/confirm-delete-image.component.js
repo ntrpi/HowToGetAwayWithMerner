@@ -33,7 +33,7 @@ export default class ConfirmDeleteImage extends Component
     componentDidMount()
     {
         // Access the image confirm delete endpoint.
-        axios.get( 'http://localhost:4000/images/confirm-delete/' + this.state.imageId )
+        axios.get( 'http:///images/confirm-delete/' + this.state.imageId )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.
@@ -57,7 +57,7 @@ export default class ConfirmDeleteImage extends Component
             image_name: this.state.image.image_name,
         };
         console.log( "Deleting image " + this.state.imageId );
-        axios.post( 'http://localhost:4000/images/delete/' + this.state.imageId, image )
+        axios.post( 'http:///images/delete/' + this.state.imageId, image )
             .then( res => console.log( res.data ) );
 
         // Redirect back to the app's default route.

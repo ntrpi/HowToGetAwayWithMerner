@@ -33,7 +33,7 @@ export default class ConfirmDeleteUser extends Component
     componentDidMount()
     {
         // Access the user confirm delete endpoint.
-        axios.get( 'http://localhost:4000/users/confirm-delete/' + this.state.userId )
+        axios.get( 'http:///users/confirm-delete/' + this.state.userId )
             .then( response =>
             {
                 // I'm guessing we got back an array of objects.
@@ -60,7 +60,7 @@ export default class ConfirmDeleteUser extends Component
             user_status: this.state.user.user_status
         };
         console.log( "Deleting user " + this.state.userId );
-        axios.post( 'http://localhost:4000/users/delete/' + this.state.userId, user )
+        axios.post( 'http:///users/delete/' + this.state.userId, user )
             .then( res => console.log( res.data ) );
 
         // Redirect back to the app's default route.
