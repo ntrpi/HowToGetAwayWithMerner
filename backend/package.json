@@ -4,12 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build",
-    "install-build": "npm install",
-    "heroku-postbuild": "npm run install-build && npm run build",
-    "server": "nodemon server.js",
-    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run startt\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +15,6 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.12.10",
-    "multer": "^1.4.2",
-    "nodemailer": "^6.6.2",
-    "uuid": "^8.3.2"
+    "mongoose": "^5.12.10"
   }
 }
