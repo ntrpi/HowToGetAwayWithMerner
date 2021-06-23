@@ -28,7 +28,7 @@ export default class ConfirmDeleteListing extends Component
     componentDidMount()
     {
         // Access the user confirm delete endpoint.
-        axios.get( '/listings/confirm-delete/' + this.state.listingId )
+        axios.get( 'http://localhost:4000/listings/confirm-delete/' + this.state.listingId )
             .then( response =>
             {
                 
@@ -55,7 +55,7 @@ export default class ConfirmDeleteListing extends Component
             is_flagged: this.state.listing.is_flagged,
         };
         console.log( "Deleting listing " + this.state.listingId );
-        axios.post( '/listings/delete/' + this.state.listingId, listing )
+        axios.post( 'http://localhost:4000/listings/delete/' + this.state.listingId, listing )
             .then( res => console.log( res.data ) );
 
         // Redirect back to the app's default route.

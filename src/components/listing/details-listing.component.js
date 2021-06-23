@@ -39,12 +39,12 @@ export default class ListingDetails extends Component
 
     componentDidMount()
     {
-        axios.get( '/listings/' + this.state.listingId )
+        axios.get( 'http://localhost:4000/listings/' + this.state.listingId )
         .then( response => {
             //sets listing from this.setstate above
             this.setState( { listing:response.data } );
 
-            axios.get( '/listingImages/images/' + this.state.listingId )
+            axios.get( 'http://localhost:4000/listingImages/images/' + this.state.listingId )
             .then( response => {
                 this.setState( { listingImages: response.data } );
             } )

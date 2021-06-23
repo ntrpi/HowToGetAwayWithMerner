@@ -1,11 +1,11 @@
 var router = require( 'express' ).Router();
 
-router.get( '/', function( req, res )
+router.get( 'http://localhost:4000/', function( req, res )
 {
     res.send( 'Index Page' );
 } );
 
-router.get( '/about', function( req, res )
+router.get( 'http://localhost:4000/about', function( req, res )
 {
     res.send( 'About Page' );
 } );

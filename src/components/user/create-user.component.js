@@ -55,7 +55,6 @@ export default class CreateUser extends Component
     //Function for validating Email
     isValidEmail( email ) 
     {
-      
         //Checks against NULL
         if( ( email === null ) || email === "" ) {
             return "Email required";
@@ -139,7 +138,7 @@ export default class CreateUser extends Component
         };
 
         // Do the post.
-        axios.post( '/users/add', newUser )
+        axios.post( 'http://localhost:4000/users/add', newUser )
             .then(
                 res => this.props.history.push( '/user/details/' + res.data.user._id )
             );

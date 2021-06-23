@@ -20,7 +20,7 @@ export default class Image extends Component
 
     componentDidMount()
     {
-        axios.get( '/images/' + this.state.imageId )
+        axios.get( 'http://localhost:4000/images/' + this.state.imageId )
         .then(response =>{
             //sets the user from this.setstate above
             this.setState({image: response.data})

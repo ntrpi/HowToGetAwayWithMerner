@@ -38,7 +38,7 @@ export default class EditUser extends Component
     // Note that the method for "completed" is missing.
     
     componentDidMount(){
-        axios.get( '/users/' + this.props.match.params.id )
+        axios.get( 'http://localhost:4000/users/' + this.props.match.params.id )
         .then(response =>
             {
                 this.setState({
