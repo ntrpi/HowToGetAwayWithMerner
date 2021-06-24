@@ -181,8 +181,23 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 
 ### Jemi
 #### Project
+* Attended meetings
+
 #### Features
+* Homepage
+* Review
+The homepage nor the Review component was not successfully implemented
+
 #### Teamwork
+* I was not able to contribute to the project since my attempts to add components had failed. 
+* Focused more on self-learning and grasping the basic concepts of React
+
+##### Learning Curve
+- With the team code base that was built by Sandra, Journey and Asia, I spent much time trying to understand the code base including the routes, the folder structure, useStates, props etc. I attempted many times to add a new review component but the site would fail to compile. I also tried multiple times to refactor the code to display the homepage with react bootstrap styling. I implemented the Card feature from React Bootstrap to display in a single vertical line but was not able to get it to display as 3 columns (i.e Cards) on each Row. However, after refactoring the code in the index.js and destructuring the code in the list-listing.js file, some of the links in the header did not work. 
+
+##### Future Steps
+- To continue building out the rest of the functionality for the personal React application so that it is fully functioning.  
+
 
 ### Danyal
 #### Project
