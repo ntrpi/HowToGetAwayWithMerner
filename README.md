@@ -179,12 +179,12 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 #### Features
 #### Teamwork
 
-### Danyal
+### Jemi
 #### Project
 #### Features
 #### Teamwork
 
-### Jemi
+### Danyal
 #### Project
 * Attended meetings, brain stoormed project idea
 * Took active part in project structuring and initial documentation
