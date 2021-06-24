@@ -199,6 +199,7 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 * Focused more on individual self-learning to get the grasp of MERN.
 * I fell behind the team schedule and failed to complete my part.
 
+##### Learning Curve
 - However, I did 2 mini projects, 1 completely based on a tutorial and another with the help of core concepts of MERN and was able to push it live as well.
 - https://github.com/danyaleffendi/MERN-Stack
 - https://github.com/danyaleffendi/Happy-Moments-MERN-APP (live https://happy-moments.netlify.app/)
