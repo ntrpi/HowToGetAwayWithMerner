@@ -186,8 +186,24 @@ We had originally hoped to include messaging functionality whereby a buyer and s
 
 ### Jemi
 #### Project
+* Attended meetings, brain stoormed project idea
+* Took active part in project structuring and initial documentation
+
 #### Features
+* I picked the login functionality with authentication.
+* Couldn't implement it on the project
+ 
 #### Teamwork
+* As the MERN this was very new to me without even any basic understanding I failed to contribute in the development of Project.
+* I found it quite difficult to get onboard on the project without any knowledge.
+* Focused more on individual self-learning to get the grasp of MERN.
+* I fell behind the team schedule and failed to complete my part.
+
+However, I did 2 mini projects, 1 completely based on a tutorial and another with the help of core concepts of MERN and was able to push it live as well.
+https://github.com/danyaleffendi/MERN-Stack
+https://github.com/danyaleffendi/Happy-Moments-MERN-APP (live https://happy-moments.netlify.app/)
+I was able to the the authentication for this app and will try to put my learning into this project as well.
+The limited time available for this project was quite challenging to learn something from scratch and build something with a team.
 
 ### Journey
 #### Project
